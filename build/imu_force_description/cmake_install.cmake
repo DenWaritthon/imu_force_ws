@@ -91,7 +91,12 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/imu_force_description" TYPE DIRECTORY FILES "")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/imu_force_description" TYPE DIRECTORY FILES
+    "/home/waritt/imu_force_ws/src/imu_force_description/config"
+    "/home/waritt/imu_force_ws/src/imu_force_description/launch"
+    "/home/waritt/imu_force_ws/src/imu_force_description/meshes"
+    "/home/waritt/imu_force_ws/src/imu_force_description/urdf"
+    )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)

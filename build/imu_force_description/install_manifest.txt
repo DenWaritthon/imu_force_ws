@@ -8,6 +8,15 @@
 /home/waritt/imu_force_ws/install/imu_force_description/local/lib/python3.10/dist-packages/imu_force_description/dummy_module.py
 /home/waritt/imu_force_ws/install/imu_force_description/lib/imu_force_description/dummy_script.py
 /home/waritt/imu_force_ws/install/imu_force_description/lib/imu_force_description/cpp_node_test
+/home/waritt/imu_force_ws/install/imu_force_description/share/imu_force_description/config/display.rviz
+/home/waritt/imu_force_ws/install/imu_force_description/share/imu_force_description/launch/simple_display.launch.py
+/home/waritt/imu_force_ws/install/imu_force_description/share/imu_force_description/launch/dummy_robot.launch.py
+/home/waritt/imu_force_ws/install/imu_force_description/share/imu_force_description/meshes/link_1.stl
+/home/waritt/imu_force_ws/install/imu_force_description/share/imu_force_description/meshes/link_3.stl
+/home/waritt/imu_force_ws/install/imu_force_description/share/imu_force_description/meshes/link_0.stl
+/home/waritt/imu_force_ws/install/imu_force_description/share/imu_force_description/meshes/end_effector.stl
+/home/waritt/imu_force_ws/install/imu_force_description/share/imu_force_description/meshes/link_2.stl
+/home/waritt/imu_force_ws/install/imu_force_description/share/imu_force_description/urdf/my-robot.xacro
 /home/waritt/imu_force_ws/install/imu_force_description/share/ament_index/resource_index/package_run_dependencies/imu_force_description
 /home/waritt/imu_force_ws/install/imu_force_description/share/ament_index/resource_index/parent_prefix_path/imu_force_description
 /home/waritt/imu_force_ws/install/imu_force_description/share/imu_force_description/environment/ament_prefix_path.sh
