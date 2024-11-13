@@ -50,8 +50,7 @@ install(DIRECTORY
   # add directories here
   config
   launch
-  meshes
-  urdf
+  model
   DESTINATION share/${PROJECT_NAME})
 
 ament_package()
