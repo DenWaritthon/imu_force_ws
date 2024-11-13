@@ -1,0 +1,43 @@
+[0.009s] Invoking command in '/home/waritt/imu_force_ws/build/imu_force_gazebo': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/waritt/imu_force_ws/build/imu_force_gazebo -- -j16 -l16
+[0.043s] [100%] Built target cpp_node_test
+[0.048s] [100%] Built target ament_cmake_python_copy_imu_force_gazebo
+[0.211s] running egg_info
+[0.211s] writing imu_force_gazebo.egg-info/PKG-INFO
+[0.211s] writing dependency_links to imu_force_gazebo.egg-info/dependency_links.txt
+[0.212s] writing top-level names to imu_force_gazebo.egg-info/top_level.txt
+[0.213s] reading manifest file 'imu_force_gazebo.egg-info/SOURCES.txt'
+[0.213s] writing manifest file 'imu_force_gazebo.egg-info/SOURCES.txt'
+[0.232s] [100%] Built target ament_cmake_python_build_imu_force_gazebo_egg
+[0.240s] Invoked command in '/home/waritt/imu_force_ws/build/imu_force_gazebo' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/waritt/imu_force_ws/build/imu_force_gazebo -- -j16 -l16
+[0.267s] Invoking command in '/home/waritt/imu_force_ws/build/imu_force_gazebo': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/waritt/imu_force_ws/build/imu_force_gazebo
+[0.271s] -- Install configuration: ""
+[0.271s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_gazebo/share/imu_force_gazebo/environment/pythonpath.sh
+[0.271s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_gazebo/share/imu_force_gazebo/environment/pythonpath.dsv
+[0.272s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_gazebo/local/lib/python3.10/dist-packages/imu_force_gazebo-0.0.0-py3.10.egg-info
+[0.272s] -- Installing: /home/waritt/imu_force_ws/install/imu_force_gazebo/local/lib/python3.10/dist-packages/imu_force_gazebo-0.0.0-py3.10.egg-info/SOURCES.txt
+[0.272s] -- Installing: /home/waritt/imu_force_ws/install/imu_force_gazebo/local/lib/python3.10/dist-packages/imu_force_gazebo-0.0.0-py3.10.egg-info/top_level.txt
+[0.272s] -- Installing: /home/waritt/imu_force_ws/install/imu_force_gazebo/local/lib/python3.10/dist-packages/imu_force_gazebo-0.0.0-py3.10.egg-info/PKG-INFO
+[0.272s] -- Installing: /home/waritt/imu_force_ws/install/imu_force_gazebo/local/lib/python3.10/dist-packages/imu_force_gazebo-0.0.0-py3.10.egg-info/dependency_links.txt
+[0.272s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_gazebo/local/lib/python3.10/dist-packages/imu_force_gazebo
+[0.272s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_gazebo/local/lib/python3.10/dist-packages/imu_force_gazebo/__init__.py
+[0.272s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_gazebo/local/lib/python3.10/dist-packages/imu_force_gazebo/dummy_module.py
+[0.297s] Listing '/home/waritt/imu_force_ws/install/imu_force_gazebo/local/lib/python3.10/dist-packages/imu_force_gazebo'...
+[0.300s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_gazebo/lib/imu_force_gazebo/dummy_script.py
+[0.300s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_gazebo/lib/imu_force_gazebo/cpp_node_test
+[0.300s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_gazebo/share/imu_force_gazebo
+[0.300s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_gazebo/share/ament_index/resource_index/package_run_dependencies/imu_force_gazebo
+[0.300s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_gazebo/share/ament_index/resource_index/parent_prefix_path/imu_force_gazebo
+[0.300s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_gazebo/share/imu_force_gazebo/environment/ament_prefix_path.sh
+[0.300s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_gazebo/share/imu_force_gazebo/environment/ament_prefix_path.dsv
+[0.300s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_gazebo/share/imu_force_gazebo/environment/path.sh
+[0.300s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_gazebo/share/imu_force_gazebo/environment/path.dsv
+[0.300s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_gazebo/share/imu_force_gazebo/local_setup.bash
+[0.300s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_gazebo/share/imu_force_gazebo/local_setup.sh
+[0.300s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_gazebo/share/imu_force_gazebo/local_setup.zsh
+[0.300s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_gazebo/share/imu_force_gazebo/local_setup.dsv
+[0.300s] -- Installing: /home/waritt/imu_force_ws/install/imu_force_gazebo/share/imu_force_gazebo/package.dsv
+[0.300s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_gazebo/share/ament_index/resource_index/packages/imu_force_gazebo
+[0.300s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_gazebo/share/imu_force_gazebo/cmake/imu_force_gazeboConfig.cmake
+[0.300s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_gazebo/share/imu_force_gazebo/cmake/imu_force_gazeboConfig-version.cmake
+[0.300s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_gazebo/share/imu_force_gazebo/package.xml
+[0.308s] Invoked command in '/home/waritt/imu_force_ws/build/imu_force_gazebo' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/waritt/imu_force_ws/build/imu_force_gazebo

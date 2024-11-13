@@ -9,7 +9,7 @@
 /home/waritt/imu_force_ws/install/imu_force_description/lib/imu_force_description/dummy_script.py
 /home/waritt/imu_force_ws/install/imu_force_description/lib/imu_force_description/cpp_node_test
 /home/waritt/imu_force_ws/install/imu_force_description/share/imu_force_description/launch/cylinder_display.launch.py
-/home/waritt/imu_force_ws/install/imu_force_description/share/imu_force_description/launch/aaacylinder_display.launch.py
+/home/waritt/imu_force_ws/install/imu_force_description/share/imu_force_description/model/inertial.xacro
 /home/waritt/imu_force_ws/install/imu_force_description/share/imu_force_description/model/gazebo.xacro
 /home/waritt/imu_force_ws/install/imu_force_description/share/imu_force_description/model/my-cylinder.xacro
 /home/waritt/imu_force_ws/install/imu_force_description/share/ament_index/resource_index/package_run_dependencies/imu_force_description

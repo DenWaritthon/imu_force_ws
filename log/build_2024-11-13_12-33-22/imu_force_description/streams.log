@@ -1,0 +1,49 @@
+[0.012s] Invoking command in '/home/waritt/imu_force_ws/build/imu_force_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/waritt/imu_force_ws/build/imu_force_description -- -j16 -l16
+[0.046s] [100%] Built target cpp_node_test
+[0.051s] [100%] Built target ament_cmake_python_copy_imu_force_description
+[0.216s] running egg_info
+[0.216s] writing imu_force_description.egg-info/PKG-INFO
+[0.216s] writing dependency_links to imu_force_description.egg-info/dependency_links.txt
+[0.216s] writing top-level names to imu_force_description.egg-info/top_level.txt
+[0.218s] reading manifest file 'imu_force_description.egg-info/SOURCES.txt'
+[0.218s] writing manifest file 'imu_force_description.egg-info/SOURCES.txt'
+[0.236s] [100%] Built target ament_cmake_python_build_imu_force_description_egg
+[0.243s] Invoked command in '/home/waritt/imu_force_ws/build/imu_force_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/waritt/imu_force_ws/build/imu_force_description -- -j16 -l16
+[0.270s] Invoking command in '/home/waritt/imu_force_ws/build/imu_force_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/waritt/imu_force_ws/build/imu_force_description
+[0.275s] -- Install configuration: ""
+[0.275s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_description/share/imu_force_description/environment/pythonpath.sh
+[0.275s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_description/share/imu_force_description/environment/pythonpath.dsv
+[0.275s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_description/local/lib/python3.10/dist-packages/imu_force_description-0.0.0-py3.10.egg-info
+[0.275s] -- Installing: /home/waritt/imu_force_ws/install/imu_force_description/local/lib/python3.10/dist-packages/imu_force_description-0.0.0-py3.10.egg-info/SOURCES.txt
+[0.275s] -- Installing: /home/waritt/imu_force_ws/install/imu_force_description/local/lib/python3.10/dist-packages/imu_force_description-0.0.0-py3.10.egg-info/top_level.txt
+[0.275s] -- Installing: /home/waritt/imu_force_ws/install/imu_force_description/local/lib/python3.10/dist-packages/imu_force_description-0.0.0-py3.10.egg-info/PKG-INFO
+[0.275s] -- Installing: /home/waritt/imu_force_ws/install/imu_force_description/local/lib/python3.10/dist-packages/imu_force_description-0.0.0-py3.10.egg-info/dependency_links.txt
+[0.275s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_description/local/lib/python3.10/dist-packages/imu_force_description
+[0.275s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_description/local/lib/python3.10/dist-packages/imu_force_description/__init__.py
+[0.275s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_description/local/lib/python3.10/dist-packages/imu_force_description/dummy_module.py
+[0.301s] Listing '/home/waritt/imu_force_ws/install/imu_force_description/local/lib/python3.10/dist-packages/imu_force_description'...
+[0.303s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_description/lib/imu_force_description/dummy_script.py
+[0.303s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_description/lib/imu_force_description/cpp_node_test
+[0.303s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_description/share/imu_force_description/config
+[0.303s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_description/share/imu_force_description/launch
+[0.304s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_description/share/imu_force_description/launch/cylinder_display.launch.py
+[0.304s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_description/share/imu_force_description/model
+[0.304s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_description/share/imu_force_description/model/inertial.xacro
+[0.304s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_description/share/imu_force_description/model/gazebo.xacro
+[0.304s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_description/share/imu_force_description/model/my-cylinder.xacro
+[0.304s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_description/share/ament_index/resource_index/package_run_dependencies/imu_force_description
+[0.304s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_description/share/ament_index/resource_index/parent_prefix_path/imu_force_description
+[0.304s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_description/share/imu_force_description/environment/ament_prefix_path.sh
+[0.304s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_description/share/imu_force_description/environment/ament_prefix_path.dsv
+[0.304s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_description/share/imu_force_description/environment/path.sh
+[0.304s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_description/share/imu_force_description/environment/path.dsv
+[0.304s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_description/share/imu_force_description/local_setup.bash
+[0.304s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_description/share/imu_force_description/local_setup.sh
+[0.305s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_description/share/imu_force_description/local_setup.zsh
+[0.305s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_description/share/imu_force_description/local_setup.dsv
+[0.305s] -- Installing: /home/waritt/imu_force_ws/install/imu_force_description/share/imu_force_description/package.dsv
+[0.305s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_description/share/ament_index/resource_index/packages/imu_force_description
+[0.305s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_description/share/imu_force_description/cmake/imu_force_descriptionConfig.cmake
+[0.305s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_description/share/imu_force_description/cmake/imu_force_descriptionConfig-version.cmake
+[0.305s] -- Up-to-date: /home/waritt/imu_force_ws/install/imu_force_description/share/imu_force_description/package.xml
+[0.313s] Invoked command in '/home/waritt/imu_force_ws/build/imu_force_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/waritt/imu_force_ws/build/imu_force_description

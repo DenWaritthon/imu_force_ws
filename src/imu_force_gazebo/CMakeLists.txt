@@ -47,6 +47,8 @@ install(TARGETS
 
 ################ INSTALL LAUNCH, ETC #################
 install(DIRECTORY
+  config
+  launch
   # add directories here
   DESTINATION share/${PROJECT_NAME})
 

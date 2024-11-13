@@ -2,29 +2,25 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="my_cylinder">
 
 	<!-- Include the Gazebo definitions  -->
-	<!-- <xacro:include filename="gazebo.xacro"/> -->
+	<xacro:include filename="gazebo.xacro"/>
 
 		<link name="cylinder">
 			<visual>
 				<geometry>
 					<cylinder length="0.5" radius="0.1"/>
 				</geometry>
-				<!-- <origin rpy="0 0 0" xyz="0 0 0"/>					 -->
+				<origin rpy="0 0 0" xyz="0 0 0"/>					
 			</visual>
 			
-			<!-- <collision>
+			<collision>
 				<geometry>
-					<cylinder length="${base_link_length}" 
-					radius="${base_link_radius}"/>
+					<cylinder length="0.5" radius="0.1"/>
 				</geometry>
-				<origin rpy="0 0 0" xyz="0 0 0"/>
 			</collision>
 			
-			<inertial>
-				<origin rpy="0 0 0" xyz="0 0 0"/>
-				<mass value="1"/>
-				<inertia ixx="100" ixy="0" ixz="0" iyy="100" iyz="0" izz="100" />
-			</inertial> -->
+			<xacro:inertial_cylinder mass="1" length="0.5" radius="0.1">
+        		<origin xyz="0 0 0" rpy="0 0 0"/>
+    		</xacro:inertial_cylinder>
 			
 		</link>	
 
