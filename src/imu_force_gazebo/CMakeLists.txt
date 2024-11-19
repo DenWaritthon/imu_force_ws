@@ -27,7 +27,8 @@ ament_python_install_package(${PROJECT_NAME})
 
 # Install Python executables
 install(PROGRAMS
-  scripts/dummy_script.py
+  scripts/force_controller.py
+  scripts/dummy_imu_acceleration.py
   DESTINATION lib/${PROJECT_NAME}
 )
 

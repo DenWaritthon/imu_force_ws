@@ -67,7 +67,10 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/imu_force_gazebo" TYPE PROGRAM FILES "/home/waritt/imu_force_ws/src/imu_force_gazebo/scripts/dummy_script.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/imu_force_gazebo" TYPE PROGRAM FILES
+    "/home/waritt/imu_force_ws/src/imu_force_gazebo/scripts/force_controller.py"
+    "/home/waritt/imu_force_ws/src/imu_force_gazebo/scripts/dummy_imu_acceleration.py"
+    )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)

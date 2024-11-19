@@ -6,7 +6,8 @@
 /home/waritt/imu_force_ws/install/imu_force_gazebo/local/lib/python3.10/dist-packages/imu_force_gazebo-0.0.0-py3.10.egg-info/dependency_links.txt
 /home/waritt/imu_force_ws/install/imu_force_gazebo/local/lib/python3.10/dist-packages/imu_force_gazebo/__init__.py
 /home/waritt/imu_force_ws/install/imu_force_gazebo/local/lib/python3.10/dist-packages/imu_force_gazebo/dummy_module.py
-/home/waritt/imu_force_ws/install/imu_force_gazebo/lib/imu_force_gazebo/dummy_script.py
+/home/waritt/imu_force_ws/install/imu_force_gazebo/lib/imu_force_gazebo/force_controller.py
+/home/waritt/imu_force_ws/install/imu_force_gazebo/lib/imu_force_gazebo/dummy_imu_acceleration.py
 /home/waritt/imu_force_ws/install/imu_force_gazebo/lib/imu_force_gazebo/cpp_node_test
 /home/waritt/imu_force_ws/install/imu_force_gazebo/share/imu_force_gazebo/launch/sim.launch.py
 /home/waritt/imu_force_ws/install/imu_force_gazebo/share/ament_index/resource_index/package_run_dependencies/imu_force_gazebo
