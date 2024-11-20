@@ -5,7 +5,6 @@ from launch.substitutions import LaunchConfiguration
 from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 import os
-import xacro 
 
 def generate_launch_description():
 
@@ -17,7 +16,7 @@ def generate_launch_description():
                 os.path.join(
                     get_package_share_directory(package_name),
                     "launch",
-                    "cylinder_display.launch.py"
+                    "cylinder_description.launch.py"
                 )
             ]
         ),

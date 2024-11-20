@@ -1,8 +1,10 @@
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch_ros.actions import Node
+from launch.substitutions import LaunchConfiguration
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
+from launch.launch_description_sources import PythonLaunchDescriptionSource
 import os
-import xacro
 
 def generate_launch_description():
     
@@ -15,19 +17,21 @@ def generate_launch_description():
         name='rviz',
         arguments=['-d', rviz_path],
         output='screen')
-
-    path_description = os.path.join(pkg,'model','my-cylinder.xacro')
-    robot_desc_xml = xacro.process_file(path_description).toxml()
     
-    parameters = [{'robot_description':robot_desc_xml}]
-    robot_state_publisher = Node(package='robot_state_publisher',
-                                  executable='robot_state_publisher',
-                                  output='screen',
-                                  parameters=parameters
+    cylinder = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            [
+                os.path.join(
+                    get_package_share_directory('imu_force_description'),
+                    "launch",
+                    "cylinder_description.launch.py"
+                )
+            ]
+        ),
     )
 
     launch_description = LaunchDescription() 
     launch_description.add_action(rviz)
-    launch_description.add_action(robot_state_publisher)
+    launch_description.add_action(cylinder)
 
     return launch_description
