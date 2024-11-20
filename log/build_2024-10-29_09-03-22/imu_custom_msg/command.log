@@ -1,0 +1,2 @@
+Invoking command in '/home/chayanin09/uros_ws/build/imu_custom_msg': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/chayanin09/uros_ws/src/imu_custom_msg -DCMAKE_INSTALL_PREFIX=/home/chayanin09/uros_ws/install/imu_custom_msg
+Invoked command in '/home/chayanin09/uros_ws/build/imu_custom_msg' returned '1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/chayanin09/uros_ws/src/imu_custom_msg -DCMAKE_INSTALL_PREFIX=/home/chayanin09/uros_ws/install/imu_custom_msg

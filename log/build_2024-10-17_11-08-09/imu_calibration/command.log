@@ -1,0 +1,6 @@
+Invoking command in '/home/chayanin09/uros_ws/build/imu_calibration': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/chayanin09/uros_ws/src/IMU_calibrator -DCMAKE_INSTALL_PREFIX=/home/chayanin09/uros_ws/install/imu_calibration
+Invoked command in '/home/chayanin09/uros_ws/build/imu_calibration' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/chayanin09/uros_ws/src/IMU_calibrator -DCMAKE_INSTALL_PREFIX=/home/chayanin09/uros_ws/install/imu_calibration
+Invoking command in '/home/chayanin09/uros_ws/build/imu_calibration': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/chayanin09/uros_ws/build/imu_calibration -- -j20 -l20
+Invoked command in '/home/chayanin09/uros_ws/build/imu_calibration' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/chayanin09/uros_ws/build/imu_calibration -- -j20 -l20
+Invoking command in '/home/chayanin09/uros_ws/build/imu_calibration': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/chayanin09/uros_ws/build/imu_calibration
+Invoked command in '/home/chayanin09/uros_ws/build/imu_calibration' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/chayanin09/uros_ws/build/imu_calibration

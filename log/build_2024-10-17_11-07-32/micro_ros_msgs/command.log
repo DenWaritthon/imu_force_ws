@@ -1,0 +1,1 @@
+Invoking command in '/home/chayanin09/uros_ws/build/micro_ros_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/chayanin09/uros_ws/src/uros/micro_ros_msgs -DCMAKE_INSTALL_PREFIX=/home/chayanin09/uros_ws/install/micro_ros_msgs

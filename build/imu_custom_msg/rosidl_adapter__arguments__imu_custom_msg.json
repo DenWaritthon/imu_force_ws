@@ -1,0 +1,7 @@
+{
+  "package_name": "imu_custom_msg",
+  "non_idl_tuples": [
+    "/home/chayanin09/uros_ws/src/imu_custom_msg:srv/GetStatus.srv",
+    "/home/chayanin09/uros_ws/src/imu_custom_msg:srv/Calibrate.srv"
+  ]
+}

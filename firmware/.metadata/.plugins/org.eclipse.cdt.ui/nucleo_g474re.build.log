@@ -1,0 +1,19 @@
+21:41:01 **** Incremental Build of configuration Debug for project nucleo_g474re ****
+make -j20 all 
+docker pull microros/micro_ros_static_library_builder:humble && docker run --rm -v /home/chayanin09/uros_ws/firmware/nucleo_g474re:/project --env MICROROS_LIBRARY_FOLDER=micro_ros_stm32cubemx_utils/microros_static_library_ide microros/micro_ros_static_library_builder:humble
+humble: Pulling from microros/micro_ros_static_library_builder
+Digest: sha256:83ab4e8ce95b2a62feb5dd270ad4460218d2d026a455ea32a5873cf629aa1e99
+Status: Image is up to date for microros/micro_ros_static_library_builder:humble
+docker.io/microros/micro_ros_static_library_builder:humble
+dos2unix: converting file /project/micro_ros_stm32cubemx_utils/microros_static_library_ide/library_generation/library_generation.sh to Unix format...
+micro-ROS library found. Skipping...
+Delete micro_ros_stm32cubemx_utils/microros_static_library_ide/libmicroros/ for rebuild.
+ 
+arm-none-eabi-size  nucleo_g474re.elf 
+   text	   data	    bss	    dec	    hex	filename
+ 100592	    676	  46112	 147380	  23fb4	nucleo_g474re.elf
+Finished building: default.size.stdout
+ 
+
+21:41:06 Build Finished. 0 errors, 0 warnings. (took 4s.491ms)
+
