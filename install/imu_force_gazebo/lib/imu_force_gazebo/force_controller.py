@@ -24,8 +24,8 @@ class ForceController(Node):
 
         # variable
         self.name = 'cylinder'
-        self.force_x = 100.0
-        self.force_y = 50.0
+        self.force_x = 0.0
+        self.force_y = 0.0
 
         self.mass = 1
 

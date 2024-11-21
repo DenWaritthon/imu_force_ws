@@ -7,18 +7,18 @@
 		<link name="cylinder">
 			<visual>
 				<geometry>
-					<cylinder length="0.5" radius="0.1"/>
+					<cylinder length="0.06" radius="0.032"/>
 				</geometry>
 				<origin rpy="0 0 0" xyz="0 0 0"/>					
 			</visual>
 			
 			<collision>
 				<geometry>
-					<cylinder length="0.5" radius="0.1"/>
+					<cylinder length="0.06" radius="0.032"/>
 				</geometry>
 			</collision>
 			
-			<xacro:inertial_cylinder mass="1" length="0.5" radius="0.1">
+			<xacro:inertial_cylinder mass="0.05" length="0.06" radius="0.032">
         		<origin xyz="0 0 0" rpy="0 0 0"/>
     		</xacro:inertial_cylinder>
 			

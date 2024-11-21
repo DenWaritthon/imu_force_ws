@@ -17,8 +17,8 @@ class DummyIMUAcceleration(Node):
         self.create_timer(self.dt, self.timer_loop)
         
         # variable
-        self.acc_x = [0.0, 100.0, 0.0, 0.0, 0.0, -100.0, 0.0]
-        self.acc_y = [0.0, 50.0, 0.0, 0.0, 0.0, -50.0, 0.0]
+        self.acc_x = [0.0, 10.0, 0.0, 0.0, 0.0, -10.0, 0.0]
+        self.acc_y = [0.0, 5.0, 0.0, 0.0, 0.0, -5.0, 0.0]
 
         self.get_logger().info(f'Node Dummy IMU Acceleration Start!!!')
 
