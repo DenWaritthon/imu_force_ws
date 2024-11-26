@@ -9,6 +9,7 @@
 /home/waritt/imu_force_ws/install/imu_force_gazebo/lib/imu_force_gazebo/force_controller.py
 /home/waritt/imu_force_ws/install/imu_force_gazebo/lib/imu_force_gazebo/dummy_imu_acceleration.py
 /home/waritt/imu_force_ws/install/imu_force_gazebo/lib/imu_force_gazebo/cpp_node_test
+/home/waritt/imu_force_ws/install/imu_force_gazebo/share/imu_force_gazebo/config/display.rviz
 /home/waritt/imu_force_ws/install/imu_force_gazebo/share/imu_force_gazebo/launch/sim.launch.py
 /home/waritt/imu_force_ws/install/imu_force_gazebo/share/ament_index/resource_index/package_run_dependencies/imu_force_gazebo
 /home/waritt/imu_force_ws/install/imu_force_gazebo/share/ament_index/resource_index/parent_prefix_path/imu_force_gazebo

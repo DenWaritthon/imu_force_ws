@@ -3,6 +3,15 @@
 
     <xacro:include filename="inertial.xacro"/>
 
+	<gazebo>
+		<plugin name="ground_truth_plugin" filename="libgazebo_ros_p3d.so">
+			<update_rate>50.0</update_rate>
+			<body_name>cylinder</body_name>
+			<frame_name>world</frame_name>
+		</plugin>
+	</gazebo>
+
+
 	<gazebo reference="cylinder">
 		<mu1>0.0</mu1>
 		<mu2>0.0</mu2>

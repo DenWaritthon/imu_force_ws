@@ -9,6 +9,15 @@ import os
 def generate_launch_description():
 
     package_name = "imu_force_description"
+
+    pkg = get_package_share_directory('imu_force_gazebo')
+    rviz_path = os.path.join(pkg,'config','display.rviz')
+    rviz = Node(
+        package='rviz2',
+        executable='rviz2',
+        name='rviz',
+        arguments=['-d', rviz_path],
+        output='screen')
     
     rsp = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
@@ -47,6 +56,7 @@ def generate_launch_description():
 
     launch_description = LaunchDescription()
     launch_description.add_action(rsp)
+    launch_description.add_action(rviz)
     launch_description.add_action(gazebo)
     launch_description.add_action(spawn_entity)
 
