@@ -1,6 +1,0 @@
-setup.py
-imu_custom_msg/__init__.py
-imu_custom_msg.egg-info/PKG-INFO
-imu_custom_msg.egg-info/SOURCES.txt
-imu_custom_msg.egg-info/dependency_links.txt
-imu_custom_msg.egg-info/top_level.txt

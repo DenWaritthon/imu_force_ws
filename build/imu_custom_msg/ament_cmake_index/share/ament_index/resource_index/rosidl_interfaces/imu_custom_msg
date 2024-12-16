@@ -1,8 +1,0 @@
-srv/Calibrate.idl
-srv/Calibrate.srv
-srv/Calibrate_Request.msg
-srv/Calibrate_Response.msg
-srv/GetStatus.idl
-srv/GetStatus.srv
-srv/GetStatus_Request.msg
-srv/GetStatus_Response.msg

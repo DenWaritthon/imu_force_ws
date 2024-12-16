@@ -1,3 +1,0 @@
-source;share/imu_calibration/environment/ament_prefix_path.sh
-source;share/imu_calibration/environment/path.sh
-source;share/imu_calibration/environment/pythonpath.sh

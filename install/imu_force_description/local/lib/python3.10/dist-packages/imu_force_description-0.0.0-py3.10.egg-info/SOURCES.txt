@@ -1,7 +1,0 @@
-setup.py
-imu_force_description/__init__.py
-imu_force_description/dummy_module.py
-imu_force_description.egg-info/PKG-INFO
-imu_force_description.egg-info/SOURCES.txt
-imu_force_description.egg-info/dependency_links.txt
-imu_force_description.egg-info/top_level.txt
