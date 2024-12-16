@@ -1,0 +1,4 @@
+source;share/imu_force_gazebo/local_setup.bash
+source;share/imu_force_gazebo/local_setup.dsv
+source;share/imu_force_gazebo/local_setup.sh
+source;share/imu_force_gazebo/local_setup.zsh

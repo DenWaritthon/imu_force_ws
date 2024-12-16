@@ -1,0 +1,6 @@
+# Request
+std_msgs/Float64MultiArray[] data
+---
+
+# Response
+std_msgs/Bool success

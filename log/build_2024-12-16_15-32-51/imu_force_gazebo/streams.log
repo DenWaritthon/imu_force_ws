@@ -1,0 +1,90 @@
+[0.011s] Invoking command in '/home/waritt/imu_force_ws_main/build/imu_force_gazebo': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/waritt/imu_force_ws_main/src/imu_force_gazebo -DCMAKE_INSTALL_PREFIX=/home/waritt/imu_force_ws_main/install/imu_force_gazebo
+[0.046s] -- The C compiler identification is GNU 11.4.0
+[0.085s] -- The CXX compiler identification is GNU 11.4.0
+[0.089s] -- Detecting C compiler ABI info
+[0.133s] -- Detecting C compiler ABI info - done
+[0.138s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.138s] -- Detecting C compile features
+[0.138s] -- Detecting C compile features - done
+[0.140s] -- Detecting CXX compiler ABI info
+[0.192s] -- Detecting CXX compiler ABI info - done
+[0.197s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.197s] -- Detecting CXX compile features
+[0.197s] -- Detecting CXX compile features - done
+[0.200s] -- Found ament_cmake: 1.3.10 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.326s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.408s] -- Found rclcpp: 16.0.10 (/opt/ros/humble/share/rclcpp/cmake)
+[0.447s] -- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.453s] -- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.460s] -- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.471s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.485s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.524s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.528s] -- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.596s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[0.620s] -- Found FastRTPS: /opt/ros/humble/include  
+[0.651s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.660s] -- Looking for pthread.h
+[0.709s] -- Looking for pthread.h - found
+[0.709s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[0.760s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[0.761s] -- Found Threads: TRUE  
+[0.800s] -- Found rclpy: 3.3.14 (/opt/ros/humble/share/rclpy/cmake)
+[0.913s] -- Configuring done
+[0.918s] -- Generating done
+[0.919s] -- Build files have been written to: /home/waritt/imu_force_ws_main/build/imu_force_gazebo
+[0.927s] Invoked command in '/home/waritt/imu_force_ws_main/build/imu_force_gazebo' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/waritt/imu_force_ws_main/src/imu_force_gazebo -DCMAKE_INSTALL_PREFIX=/home/waritt/imu_force_ws_main/install/imu_force_gazebo
+[0.927s] Invoking command in '/home/waritt/imu_force_ws_main/build/imu_force_gazebo': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/waritt/imu_force_ws_main/build/imu_force_gazebo -- -j16 -l16
+[0.960s] [ 50%] [32mBuilding CXX object CMakeFiles/cpp_node_test.dir/src/cpp_node.cpp.o[0m
+[0.965s] [ 50%] Built target ament_cmake_python_copy_imu_force_gazebo
+[1.151s] [100%] [32m[1mLinking CXX executable cpp_node_test[0m
+[1.172s] running egg_info
+[1.173s] creating imu_force_gazebo.egg-info
+[1.173s] writing imu_force_gazebo.egg-info/PKG-INFO
+[1.173s] writing dependency_links to imu_force_gazebo.egg-info/dependency_links.txt
+[1.174s] writing top-level names to imu_force_gazebo.egg-info/top_level.txt
+[1.174s] writing manifest file 'imu_force_gazebo.egg-info/SOURCES.txt'
+[1.176s] reading manifest file 'imu_force_gazebo.egg-info/SOURCES.txt'
+[1.176s] writing manifest file 'imu_force_gazebo.egg-info/SOURCES.txt'
+[1.202s] [100%] Built target ament_cmake_python_build_imu_force_gazebo_egg
+[1.222s] [100%] Built target cpp_node_test
+[1.230s] Invoked command in '/home/waritt/imu_force_ws_main/build/imu_force_gazebo' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/waritt/imu_force_ws_main/build/imu_force_gazebo -- -j16 -l16
+[1.252s] Invoking command in '/home/waritt/imu_force_ws_main/build/imu_force_gazebo': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/waritt/imu_force_ws_main/build/imu_force_gazebo
+[1.257s] -- Install configuration: ""
+[1.257s] -- Installing: /home/waritt/imu_force_ws_main/install/imu_force_gazebo/share/imu_force_gazebo/environment/pythonpath.sh
+[1.258s] -- Installing: /home/waritt/imu_force_ws_main/install/imu_force_gazebo/share/imu_force_gazebo/environment/pythonpath.dsv
+[1.258s] -- Installing: /home/waritt/imu_force_ws_main/install/imu_force_gazebo/local/lib/python3.10/dist-packages/imu_force_gazebo-0.0.0-py3.10.egg-info
+[1.258s] -- Installing: /home/waritt/imu_force_ws_main/install/imu_force_gazebo/local/lib/python3.10/dist-packages/imu_force_gazebo-0.0.0-py3.10.egg-info/SOURCES.txt
+[1.258s] -- Installing: /home/waritt/imu_force_ws_main/install/imu_force_gazebo/local/lib/python3.10/dist-packages/imu_force_gazebo-0.0.0-py3.10.egg-info/top_level.txt
+[1.258s] -- Installing: /home/waritt/imu_force_ws_main/install/imu_force_gazebo/local/lib/python3.10/dist-packages/imu_force_gazebo-0.0.0-py3.10.egg-info/PKG-INFO
+[1.258s] -- Installing: /home/waritt/imu_force_ws_main/install/imu_force_gazebo/local/lib/python3.10/dist-packages/imu_force_gazebo-0.0.0-py3.10.egg-info/dependency_links.txt
+[1.258s] -- Installing: /home/waritt/imu_force_ws_main/install/imu_force_gazebo/local/lib/python3.10/dist-packages/imu_force_gazebo
+[1.258s] -- Installing: /home/waritt/imu_force_ws_main/install/imu_force_gazebo/local/lib/python3.10/dist-packages/imu_force_gazebo/__init__.py
+[1.258s] -- Installing: /home/waritt/imu_force_ws_main/install/imu_force_gazebo/local/lib/python3.10/dist-packages/imu_force_gazebo/dummy_module.py
+[1.285s] Listing '/home/waritt/imu_force_ws_main/install/imu_force_gazebo/local/lib/python3.10/dist-packages/imu_force_gazebo'...
+[1.285s] Compiling '/home/waritt/imu_force_ws_main/install/imu_force_gazebo/local/lib/python3.10/dist-packages/imu_force_gazebo/__init__.py'...
+[1.285s] Compiling '/home/waritt/imu_force_ws_main/install/imu_force_gazebo/local/lib/python3.10/dist-packages/imu_force_gazebo/dummy_module.py'...
+[1.288s] -- Installing: /home/waritt/imu_force_ws_main/install/imu_force_gazebo/lib/imu_force_gazebo/force_controller.py
+[1.288s] -- Installing: /home/waritt/imu_force_ws_main/install/imu_force_gazebo/lib/imu_force_gazebo/dummy_imu_acceleration.py
+[1.288s] -- Installing: /home/waritt/imu_force_ws_main/install/imu_force_gazebo/lib/imu_force_gazebo/cpp_node_test
+[1.288s] -- Set runtime path of "/home/waritt/imu_force_ws_main/install/imu_force_gazebo/lib/imu_force_gazebo/cpp_node_test" to ""
+[1.288s] -- Installing: /home/waritt/imu_force_ws_main/install/imu_force_gazebo/share/imu_force_gazebo/config
+[1.289s] -- Installing: /home/waritt/imu_force_ws_main/install/imu_force_gazebo/share/imu_force_gazebo/config/display.rviz
+[1.289s] -- Installing: /home/waritt/imu_force_ws_main/install/imu_force_gazebo/share/imu_force_gazebo/launch
+[1.289s] -- Installing: /home/waritt/imu_force_ws_main/install/imu_force_gazebo/share/imu_force_gazebo/launch/sim.launch.py
+[1.289s] -- Installing: /home/waritt/imu_force_ws_main/install/imu_force_gazebo/share/ament_index/resource_index/package_run_dependencies/imu_force_gazebo
+[1.289s] -- Installing: /home/waritt/imu_force_ws_main/install/imu_force_gazebo/share/ament_index/resource_index/parent_prefix_path/imu_force_gazebo
+[1.289s] -- Installing: /home/waritt/imu_force_ws_main/install/imu_force_gazebo/share/imu_force_gazebo/environment/ament_prefix_path.sh
+[1.289s] -- Installing: /home/waritt/imu_force_ws_main/install/imu_force_gazebo/share/imu_force_gazebo/environment/ament_prefix_path.dsv
+[1.289s] -- Installing: /home/waritt/imu_force_ws_main/install/imu_force_gazebo/share/imu_force_gazebo/environment/path.sh
+[1.289s] -- Installing: /home/waritt/imu_force_ws_main/install/imu_force_gazebo/share/imu_force_gazebo/environment/path.dsv
+[1.289s] -- Installing: /home/waritt/imu_force_ws_main/install/imu_force_gazebo/share/imu_force_gazebo/local_setup.bash
+[1.289s] -- Installing: /home/waritt/imu_force_ws_main/install/imu_force_gazebo/share/imu_force_gazebo/local_setup.sh
+[1.289s] -- Installing: /home/waritt/imu_force_ws_main/install/imu_force_gazebo/share/imu_force_gazebo/local_setup.zsh
+[1.289s] -- Installing: /home/waritt/imu_force_ws_main/install/imu_force_gazebo/share/imu_force_gazebo/local_setup.dsv
+[1.289s] -- Installing: /home/waritt/imu_force_ws_main/install/imu_force_gazebo/share/imu_force_gazebo/package.dsv
+[1.289s] -- Installing: /home/waritt/imu_force_ws_main/install/imu_force_gazebo/share/ament_index/resource_index/packages/imu_force_gazebo
+[1.289s] -- Installing: /home/waritt/imu_force_ws_main/install/imu_force_gazebo/share/imu_force_gazebo/cmake/imu_force_gazeboConfig.cmake
+[1.290s] -- Installing: /home/waritt/imu_force_ws_main/install/imu_force_gazebo/share/imu_force_gazebo/cmake/imu_force_gazeboConfig-version.cmake
+[1.290s] -- Installing: /home/waritt/imu_force_ws_main/install/imu_force_gazebo/share/imu_force_gazebo/package.xml
+[1.291s] Invoked command in '/home/waritt/imu_force_ws_main/build/imu_force_gazebo' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/waritt/imu_force_ws_main/build/imu_force_gazebo

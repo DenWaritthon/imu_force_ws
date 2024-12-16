@@ -1,0 +1,7 @@
+{
+  "package_name": "imu_custom_msg",
+  "non_idl_tuples": [
+    "/home/waritt/imu_force_ws_main/src/imu_custom_msg:srv/GetStatus.srv",
+    "/home/waritt/imu_force_ws_main/src/imu_custom_msg:srv/Calibrate.srv"
+  ]
+}
