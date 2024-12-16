@@ -17,8 +17,8 @@ ament_python_install_package(${PROJECT_NAME})
 
 # Install Python executables
 install(PROGRAMS
-  script/imu_calibration.py
-  script/dummy_node.py
+  script/calibrate.py
+  script/controller_node.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
