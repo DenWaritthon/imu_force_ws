@@ -41,23 +41,34 @@ git clone https://github.com/DenWaritthon/imu_force_ws.git -b main
 
 ## Newton's equations
 
+Convert the velocity obtained from the IMU into a force to apply to the object in Guzabo using Newton's equations.
+```math
+\sum F = ma
+```
+
+Given
+- $F$ is the force to be obtained
+- $m$ is the weight of the actual object, which weighs **xx kg. แก้ใน code ด้วย**
+- $a$ is the acceleration measured by the IMU
+
+
 # System architecture 
 
 ![System architecture](<picture/System architecture.png>)
 
-System seperate the work into sub-node that work differently 6 node considt of
+System separate the work into sub-node that work differently 6 node consist of
 
-- IMU_Node (Micro ROS) เป็น node ที่รับค่าของ IMU มาและ Pub ค่าขึ้นไปโดยใช้ Topic : /IMU_data ไปที่ node IMU_calibrate_node และ lowpass_accel_collector_node
+- IMU_Node (Micro ROS) is a node that have input value from IMU and Pub the value to Topic : /IMU_data to the node IMU_calibrate_node and lowpass_accel_collector_node.
 
-- IMU_calabrate_node เป็น Node ที่รับค่าจาก IMU_node (Micro ROS) มาใช้ Calibrate ค่า IMU ให้มีความแม่นยำมากขึ้น
+- IMU_calabrate_node is a Node that have input value from IMU_node (Micro ROS) to Calibrate value of the IMU to make it more accurate.
 
-- lowpass_accel_collector_node เป็น Node ที่รับค่าจาก IMU_node (Micro Ros) หลังจากที่ Calibate ค่าไปแล้วโดยจะค่าค่า ความเร่งโดยจะ Pub Topic : /acceleration ไปที่ Node Force_control_node 
+- lowpass_accel_collector_node is a Node that have a input value from IMU_node (Micro Ros) after Calibate the value then the accelerate value by Pub Topic : /acceleration to Node Force_control_node
 
-- Force_control_node เป็น Node ที่จะรับค่าความเร่งจาก Node : lowpass_accel_collector_node มาคำนวณโดยใช้ Newton's equations เพื่อควบคุม Object ผ่าน Servive :/apply_link_wrench ของ Gazebo
+- Force_control_node is a Node that get input of accelerate value from Node : lowpass_accel_collector_node to calculate in Newton's equations to control Object by Servive :/apply_link_wrench of Gazebo
 
-- dummy_imu_acceleration เป็น Node ที่เอาไว้ใช้ทดสอบการทำงานของ Force_control_node ที่จะควบคุม Object ของ Gazebo
+- dummy_imu_acceleration is a Node that is for testing of  Force_control_node that control Object of Gazebo
 
-- Gazebo_node จะเป็น Node ของโปรแกรม Gazebo ที่เอาไว้แสดงผลของระบบ โดยจะมี Topic : /Odom สำหรับการแสดงตำแหน่งของ Object บน Ground_truth 
+- Gazebo_node is a Node of  Gazebo program that will be display result of the system that have Topic : /Odom for display the position of the Object on Ground_truth
   
 # User guide
 
@@ -91,25 +102,24 @@ ros2 run imu_calibration controller_node.py
 ```
 
 ### Config IMU 
-สามารถแก้แกนของ IMU ได้(ในกรณีที่อย่างเปลี่ยนรูปแบบการวาง)
+Able to edit the axis of the IMU (In case of that you want to rotate the axis)
 
 ![imu_config_1](picture/imu_config_1.png)
 
-และสามารถเลือกได้ว่าจะใช้ data แบบไหน 
-- raw - bias
+And able to choose from this two option below
+- raw – bias
 - moving average
-โดยสามารถเลือก Comment ได้
+By comment the code
+And after that you need to colcon build to build the project so the project can be work properly
 
+![imu_config_2](picture/imu_config_2.png)   
 
-![imu_config_2](picture/imu_config_2.png)
-
-ถ้า Calibrate แล้วค่าไม่เท่ากับ 0 ให้มาปรับค่าแรงโน้มถ่วงให้ตรงตามท่าที่วางด้วย
+If calibrate and the value  is not  0 you need to configuration the gravity according to the axis set as well
 
 ![imu_config_3](picture/imu_config_3.png)
 
 # Demos and Result
 
-https://github.com/user-attachments/assets/915b964d-cd14-45ad-b883-2db0a28bd911
 
 # Conclusion
 Simulation the movement of the human arm using ROS2 Humble and use various python libraries for instance roboticstoolbox, spatialmath, numpy, scipy and pygame for the user interface. This simulation simulate the human arm from the shoulder to the wrist. And 3D visualized by RVIZ in ROS2 that can control manually by input or using the user interface for the easier use.
