@@ -91,11 +91,11 @@ System separate the work into sub-node that work differently 6 node consist of
 
 - Force_control_node is a Node that get input of accelerate value from Node : lowpass_accel_collector_node to calculate in Newton's equations to control Object by Servive :/apply_link_wrench of Gazebo.
 
-- distance_gazebo_node is a Node that have input value from Node : Gazebo_node to calculate distance and displacement origin to Object.
-
 - dummy_imu_acceleration is a Node that is for testing of  Force_control_node that control Object of Gazebo.
 
 - Gazebo_node is a Node of  Gazebo program that will be display result of the system that have Topic : /Odom for display the position of the Object on Ground_truth.
+
+- distance_gazebo_node is a Node that have input value from Node : Gazebo_node to calculate distance and displacement origin to Object.
   
 # User guide
 
@@ -149,7 +149,10 @@ If you make any changes, don't forget to run `colcon build` again.
 
 # Demos and Result
 
-[![Little red riding hood](https://i.sstatic.net/XCRlR.png)](https://vimeo.com/3514904 "Little red riding hood - Click to Watch!")
+This section showcases the system's capabilities and results.
+
+### Demo 
+
 
 # Conclusion
 Simulation the movement of the human arm using ROS2 Humble and use various python libraries for instance roboticstoolbox, spatialmath, numpy, scipy and pygame for the user interface. This simulation simulate the human arm from the shoulder to the wrist. And 3D visualized by RVIZ in ROS2 that can control manually by input or using the user interface for the easier use.
