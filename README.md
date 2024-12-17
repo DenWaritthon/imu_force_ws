@@ -5,6 +5,19 @@ This repository focuses on developing firmware and implementing signal-processin
 # Table of Contents
 
 
+# Objectivr
+- To create a simulation system for the movement of objects when a force is applied to the Gazebo by using the actual force obtained by converting the value from the IMU Sensor into the force that will be applied to the object on the Gazebo.
+
+# Scope
+- **Actual Object**
+  - The actual object is a cylinder with a diameter of 32 mm and a height of 60 mm. An IMU sensor is attached at the center of the object, which is made from PETG plastic.
+- **Simulation System**
+  -  The system is constructed on Gazebo with the object model being a cylinder of the same size as the actual object.
+  -  The force applied to the object in the simulation system is only applied at the center of the object.
+  -  The force applied will only be in the x and y axes.
+- **Testing System**
+  - Testing is conducted by attaching the actual object to a core XY movement system that can move 0.18 m in the x-axis and 0.18 m in the y-axis.
+  - The system will move with an acceleration not exceeding 0.5 m/s².
 
 # User installation guide 
 
