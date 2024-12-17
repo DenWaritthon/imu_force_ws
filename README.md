@@ -15,6 +15,18 @@ Ensure you have the following dependencies installed
 **Hardware Require**
 - `STM32 G474RE`
 - `MPU6050`
+  
+**Hardware Setup**
+**Pin Connections**
+
+| STM32G474RE Pin | MPU6050 Pin |
+|-----------------|-------------|
+| 5V              | VCC         |
+| GND             | GND         |
+| PB_8/D15        | SCL         |
+| PB_9/D14        | SDA         |
+
+![pic_connections](picture/imu_force_pin.png)
 
 **Middle ware**
 - `ROS2 Humble`
@@ -23,8 +35,6 @@ Ensure you have the following dependencies installed
 **Applications**
 - `Gazabo` 
 - `STM32CubeIDE`
-
-**
 
 ## Install project workspace
 Clone this workspace
@@ -126,6 +136,7 @@ If you make any changes, don't forget to run `colcon build` again.
 
 # Demos and Result
 
+[![Little red riding hood](https://i.sstatic.net/XCRlR.png)](https://vimeo.com/3514904 "Little red riding hood - Click to Watch!")
 
 # Conclusion
 Simulation the movement of the human arm using ROS2 Humble and use various python libraries for instance roboticstoolbox, spatialmath, numpy, scipy and pygame for the user interface. This simulation simulate the human arm from the shoulder to the wrist. And 3D visualized by RVIZ in ROS2 that can control manually by input or using the user interface for the easier use.
