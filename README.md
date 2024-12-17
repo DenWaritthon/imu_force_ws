@@ -151,13 +151,15 @@ If you make any changes, don't forget to run `colcon build` again.
 
 This section showcases the system's capabilities and results.
 
-### Demo 
+Setup for testing in real world with 3D printer for test x any y axis 
 
+**Video Kriwich1**
+
+**Video Here plane1**
 
 # Conclusion
-Simulation the movement of the human arm using ROS2 Humble and use various python libraries for instance roboticstoolbox, spatialmath, numpy, scipy and pygame for the user interface. This simulation simulate the human arm from the shoulder to the wrist. And 3D visualized by RVIZ in ROS2 that can control manually by input or using the user interface for the easier use.
-\
-But the thing that we have not been done is Test and Validate compare to the real human arm so it will be in our future plans.  
+
+Our system demonstrated successful real-time synchronization between virtual and physical objects. However, during automated testing utilizing a 3D-printed motion platform, the embedded IMU was susceptible to noise induced by the stepper motor system, hindering accurate object tracking. Manual intervention revealed that the system was capable of precise movement, suggesting that the noise interference was the primary cause of the observed inaccuracies.
 
 # Future plan
 - Explore advanced filtering algorithms (e.g., Kalman filters) for improved accuracy and robustness.

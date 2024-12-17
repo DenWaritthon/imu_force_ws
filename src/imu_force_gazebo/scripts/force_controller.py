@@ -27,7 +27,7 @@ class ForceController(Node):
         self.force_x = 0.0
         self.force_y = 0.0
 
-        self.mass = 1
+        self.mass = 1 #Kg wait to fix
 
         self.acc_x = 0.0
         self.acc_y = 0.0
