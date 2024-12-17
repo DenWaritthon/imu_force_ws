@@ -24,6 +24,8 @@ Ensure you have the following dependencies installed
 - `Gazabo` 
 - `STM32CubeIDE`
 
+**
+
 ## Install project workspace
 Clone this workspace
 
@@ -62,13 +64,15 @@ System separate the work into sub-node that work differently 6 node consist of
 
 - IMU_calabrate_node is a Node that have input value from IMU_node (Micro ROS) to Calibrate value of the IMU to make it more accurate.
 
-- lowpass_accel_collector_node is a Node that have a input value from IMU_node (Micro Ros) after Calibate the value then the accelerate value by Pub Topic : /acceleration to Node Force_control_node
+- lowpass_accel_collector_node is a Node that have a input value from IMU_node (Micro Ros) after Calibate the value then the accelerate value by Pub Topic : /acceleration to Node Force_control_node.
 
-- Force_control_node is a Node that get input of accelerate value from Node : lowpass_accel_collector_node to calculate in Newton's equations to control Object by Servive :/apply_link_wrench of Gazebo
+- Force_control_node is a Node that get input of accelerate value from Node : lowpass_accel_collector_node to calculate in Newton's equations to control Object by Servive :/apply_link_wrench of Gazebo.
 
-- dummy_imu_acceleration is a Node that is for testing of  Force_control_node that control Object of Gazebo
+- distance_gazebo_node is a Node that have input value from Node : Gazebo_node to calculate distance and displacement origin to Object.
 
-- Gazebo_node is a Node of  Gazebo program that will be display result of the system that have Topic : /Odom for display the position of the Object on Ground_truth
+- dummy_imu_acceleration is a Node that is for testing of  Force_control_node that control Object of Gazebo.
+
+- Gazebo_node is a Node of  Gazebo program that will be display result of the system that have Topic : /Odom for display the position of the Object on Ground_truth.
   
 # User guide
 
