@@ -5,7 +5,7 @@ This repository focuses on developing firmware and implementing signal-processin
 # Table of Contents
 
 
-# Objectivr
+# Objective
 - To create a simulation system for the movement of objects when a force is applied to the Gazebo by using the actual force obtained by converting the value from the IMU Sensor into the force that will be applied to the object on the Gazebo.
 
 # Scope
