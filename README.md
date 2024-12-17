@@ -153,9 +153,9 @@ To validate the system, we used a **3D printer platform** configured as a Core X
 
 ![setup-on-3d-printer](picture/realword_demo1.png)
 
-**Video Kriwich1**
+https://github.com/user-attachments/assets/d1790814-c31d-4a41-a45f-163a625fc1f0
 
-**Video Here plane1**
+https://github.com/user-attachments/assets/afd3055f-6688-44f9-8034-80b5c2f93fe3
 
 # Conclusion
 
