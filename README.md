@@ -118,6 +118,8 @@ If calibrate and the value  is not  0 you need to configuration the gravity acco
 
 ![imu_config_3](picture/imu_config_3.png)
 
+If you make any changes, don't forget to run `colcon build` again.
+
 # Demos and Result
 
 

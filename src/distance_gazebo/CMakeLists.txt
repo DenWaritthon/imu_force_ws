@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(imu_force_description)
+project(distance_gazebo)
 
 # Default to C99
 if(NOT CMAKE_C_STANDARD)
@@ -28,6 +28,7 @@ ament_python_install_package(${PROJECT_NAME})
 # Install Python executables
 install(PROGRAMS
   scripts/dummy_script.py
+  scripts/distance_gazebo_node.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
@@ -48,8 +49,6 @@ install(TARGETS
 ################ INSTALL LAUNCH, ETC #################
 install(DIRECTORY
   # add directories here
-  launch
-  model
   DESTINATION share/${PROJECT_NAME})
 
 ament_package()
