@@ -149,9 +149,9 @@ If you make any changes, don't forget to run `colcon build` again.
 
 # Demos and Result
 
-This section showcases the system's capabilities and results.
+To validate the system, we used a **3D printer platform** configured as a Core XY movement system. The platform was capable of precise movement in both the **X** and **Y axes** over a range of 0.18 meters. The IMU sensor, mounted at the center of the cylindrical object, provided acceleration data, which was used to compute and apply forces in the simulation environment.
 
-Setup for testing in real world with 3D printer for test x any y axis 
+![setup-on-3d-printer](picture/realword_demo1.png)
 
 **Video Kriwich1**
 
@@ -165,7 +165,6 @@ Our system demonstrated successful real-time synchronization between virtual and
 - Explore advanced filtering algorithms (e.g., Kalman filters) for improved accuracy and robustness.
 - Expand documentation and provide example code to facilitate integration into larger robotics or control systems.
 
-   
 # Developer Member
 
 - Waritthon Kongnoo
