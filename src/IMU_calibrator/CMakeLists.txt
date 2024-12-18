@@ -18,7 +18,7 @@ ament_python_install_package(${PROJECT_NAME})
 # Install Python executables
 install(PROGRAMS
   script/calibrate.py
-  script/controller_node.py
+  script/accel_read.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
@@ -29,7 +29,7 @@ install(TARGETS
 
 ################ INSTALL LAUNCH, ETC #################
 install(DIRECTORY
-  # add directories here
+  config
   DESTINATION share/${PROJECT_NAME})
 
 ament_package()

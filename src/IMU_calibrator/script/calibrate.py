@@ -18,6 +18,9 @@ class IMUcalibratorNode(Node):
         self.get_logger().info('IMU_calibrator_Node has been started.')
         self.declare_parameter('file', 'imu_calibration.yaml')
         pkg_name = 'imu_force_gazebo'
+        imu_calib_pkg_share_path = get_package_share_directory(pkg_name)
+        ws_path = imu_calib_pkg_share_path.split('install')
+        file = self.get_parameter('file').value
 
         qos_profile = QoSProfile(
             reliability=ReliabilityPolicy.BEST_EFFORT,
@@ -33,12 +36,12 @@ class IMUcalibratorNode(Node):
         
         
         file = self.get_parameter('file').value
-        self.imu_calib_path = os.path.join(ws_path[0], 'src', 'imu_force_gazebo', 'config', file)
+        self.imu_calib_path = os.path.join(ws_path[0], 'src', 'IMU_calibrator', 'config', file)
         print(self.imu_calib_path)
         print(f"calibration file is save at: {self.imu_calib_path}")
 
         self.n = 0
-        self.n_max = 5000
+        self.n_max = 1000
         self.acc_list = []
         self.gyro_list = []
         
@@ -61,9 +64,9 @@ class IMUcalibratorNode(Node):
         if self.n < self.n_max:
             self.n += 1
             self.acc_list.append(
-                [msg.linear_acceleration.x - 9.81,
+                [msg.linear_acceleration.x ,
                  msg.linear_acceleration.y,
-                 msg.linear_acceleration.z ]
+                 msg.linear_acceleration.z - 9.81]
             )
             self.gyro_list.append(
                 [msg.angular_velocity.x,

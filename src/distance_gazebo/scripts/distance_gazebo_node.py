@@ -16,9 +16,9 @@ class DistanceCalculator(Node):
         self.timer = self.create_timer(0.1, self.timer_callback)  # 10 Hz
 
     def odom_callback(self, msg):
-        x = msg.pose.pose.position.x
-        y = msg.pose.pose.position.y
-        z = msg.pose.pose.position.z
+        x = round(msg.pose.pose.position.x, 2)
+        y = round(msg.pose.pose.position.y, 2)
+        z = round(msg.pose.pose.position.z, 2)
 
         displacement = math.sqrt(x**2 + y**2 + z**2)
         self.displacement_pub.publish(Float64(data=displacement))

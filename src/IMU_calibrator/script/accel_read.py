@@ -48,7 +48,7 @@ class LowPassAccelCollector(Node):
 
         # Deques for storing recent samples for moving average
         # We will filter all three acceleration axes
-        self.window_size = 12  # Number of samples for moving average
+        self.window_size = 16  # Number of samples for moving average
         self.acc_x_data = deque(maxlen=self.window_size)
         self.acc_y_data = deque(maxlen=self.window_size)
         self.acc_z_data = deque(maxlen=self.window_size)
@@ -58,6 +58,7 @@ class LowPassAccelCollector(Node):
         if len(data_deque) == 0:
             return 0.0
         return float(np.mean(data_deque))
+    
 
     def imu_callback(self, msg: Imu):
         # Apply offset to raw acceleration
@@ -71,20 +72,20 @@ class LowPassAccelCollector(Node):
         self.acc_z_data.append(raw_accel_z)
 
         # Compute the moving average filtered values
-        # filtered_x = self.moving_average_filter(self.acc_x_data)
-        # filtered_y = self.moving_average_filter(self.acc_y_data)
-        # filtered_z = self.moving_average_filter(self.acc_z_data)
+        filtered_x = self.moving_average_filter(self.acc_x_data)
+        filtered_y = self.moving_average_filter(self.acc_y_data)
+        filtered_z = self.moving_average_filter(self.acc_z_data)
         
-        filtered_x = raw_accel_x
-        filtered_y = raw_accel_y
-        filtered_z = raw_accel_z
+        # filtered_x = raw_accel_x
+        # filtered_y = raw_accel_y
+        # filtered_z = raw_accel_z
 
         # Create a new IMU message with filtered data
         filtered_msg = Imu()
         filtered_msg.header = msg.header
-        filtered_msg.linear_acceleration.x = filtered_z
-        filtered_msg.linear_acceleration.y = -filtered_y
-        filtered_msg.linear_acceleration.z = filtered_x
+        filtered_msg.linear_acceleration.x = round(filtered_x,1)
+        filtered_msg.linear_acceleration.y = round(filtered_y,1)
+        filtered_msg.linear_acceleration.z = round(filtered_z,1)
         filtered_msg.angular_velocity = msg.angular_velocity  # Keep angular velocity unchanged
         filtered_msg.orientation = msg.orientation  # Keep orientation unchanged
 
