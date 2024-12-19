@@ -36,8 +36,8 @@ class AccelerationFiltererNode(Node):
 
     def pub_accleration(self, a_x, a_y):
         msg = Imu()
-        msg.linear_acceleration.x = a_x
-        msg.linear_acceleration.y = a_y
+        msg.linear_acceleration.x = round(a_x,2)
+        msg.linear_acceleration.y = round(a_y,2)
 
         self.accleration_pub.publish(msg)
 

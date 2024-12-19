@@ -5,7 +5,7 @@ from rclpy.node import Node
 from gazebo_msgs.srv import ApplyLinkWrench
 from sensor_msgs.msg import Imu
 from rosgraph_msgs.msg import Clock
-from rclpy.qos import QoSProfile, QoSReliabilityPolicy
+from rclpy.qos import QoSProfile ,ReliabilityPolicy
 import math  # Import math for sqrt calculation
 
 
@@ -16,10 +16,12 @@ class ForceController(Node):
         # Service client
         self.force_client = self.create_client(ApplyLinkWrench, '/apply_link_wrench')
         
-        self.create_subscription(Clock, '/clock', self.clock_callback, 10)
+        
 
         # Subscription
         self.create_subscription(Imu, '/acceleration', self.acceleration_callback,10)
+        qos_profile = QoSProfile(reliability = ReliabilityPolicy.BEST_EFFORT,depth = 10)
+        self.create_subscription(Clock, '/clock', self.clock_callback, qos_profile)
 
         # Variables
         self.name = 'cylinder'
@@ -28,7 +30,7 @@ class ForceController(Node):
         self.force_stack_x = 0.0
         self.force_stack_y = 0.0
 
-        self.mass = 2.0 # Mass of the cylinder in kg
+        self.mass = 0.02 # Mass of the cylinder in kg
 
         self.acc_x = 0.0
         self.acc_y = 0.0
@@ -46,7 +48,7 @@ class ForceController(Node):
         msg.reference_frame = 'world'  # Apply force in world frame for consistency
 
         msg.wrench.force.x = self.force_x
-        # msg.wrench.force.y = self.force_y
+        msg.wrench.force.y = self.force_y
 
         self.set_time()
         msg.start_time.sec = int(self.time_sec)
@@ -92,8 +94,8 @@ class ForceController(Node):
         self.acc_x = msg.linear_acceleration.x
         self.acc_y = msg.linear_acceleration.y
 
-        if abs(self.acc_x) > 0.15:
-                self.get_logger().info(f'Acceleration x {abs(self.acc_x)} > 0.15')
+        if abs(self.acc_x) > 0.05 :
+                self.get_logger().info(f'Acceleration x {abs(self.acc_x)} > 0.05')
                 self.force_calculation()
                 self.set_force()
         else:

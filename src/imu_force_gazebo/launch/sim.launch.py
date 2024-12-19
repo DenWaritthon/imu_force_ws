@@ -54,9 +54,14 @@ def generate_launch_description():
         output = "screen"
     )
 
+    distance_node = Node(
+            package = 'imu_force_gazebo',
+            executable = 'distance_gazebo_node.py',
+            name = 'distance_gazebo_node')
+
     launch_description = LaunchDescription()
     launch_description.add_action(rsp)
-    launch_description.add_action(rviz)
+    # launch_description.add_action(distance_node)
     launch_description.add_action(gazebo)
     launch_description.add_action(spawn_entity)
 

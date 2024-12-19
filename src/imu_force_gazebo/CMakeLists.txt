@@ -29,6 +29,7 @@ ament_python_install_package(${PROJECT_NAME})
 install(PROGRAMS
   scripts/force_controller.py
   scripts/dummy_imu_acceleration.py
+  scripts/distance_gazebo_node.py
   DESTINATION lib/${PROJECT_NAME}
 )
 

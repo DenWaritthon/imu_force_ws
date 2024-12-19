@@ -33,7 +33,7 @@ class ImuCalibNode(Node):
         print(f'calibration file save at : {self.imu_calib_path}')
 
         self.n = 0
-        self.n_max = 10000
+        self.n_max = 1000
         self.acc_list = []
         self.gyro_list = []
 
@@ -58,7 +58,7 @@ class ImuCalibNode(Node):
             self.acc_list.append([
                 msg.linear_acceleration.x,
                 msg.linear_acceleration.y,
-                msg.linear_acceleration.z -9.81
+                msg.linear_acceleration.z
             ])
 
             self.gyro_list.append([

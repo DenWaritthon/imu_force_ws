@@ -17,7 +17,7 @@ class DistanceCalculator(Node):
 
         self.get_logger().info('Distance calculator node has been started')
 
-    def odom_callback(self, msg):
+    def odom_callback(self, msg:Odometry):
         x = round(msg.pose.pose.position.x, 2)
         y = round(msg.pose.pose.position.y, 2)
         z = round(msg.pose.pose.position.z, 2)
@@ -31,8 +31,8 @@ class DistanceCalculator(Node):
         distance.position.z = z
         self.distance_pub.publish(distance)
 
-        self.get_logger().info(f'Displacement: {displacement} m')
-        self.get_logger().info(f'Distance: {distance}')
+        # self.get_logger().info(f'Displacement: {displacement} m')
+        self.get_logger().info(f'\nDistance x: {x}\nDistance y: {y}\nDistance z: {z}')
 
     def timer_callback(self):
         pass  # Timer callback is required to keep the node alive
