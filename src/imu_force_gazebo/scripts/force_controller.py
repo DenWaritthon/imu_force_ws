@@ -15,12 +15,11 @@ class ForceController(Node):
 
         # Service client
         self.force_client = self.create_client(ApplyLinkWrench, '/apply_link_wrench')
-        # Set QoS profile to Best Effort to match Gazebo's /clock publisher
-        qos_profile = QoSProfile(depth=10, reliability=QoSReliabilityPolicy.BEST_EFFORT)
-        self.create_subscription(Clock, '/clock', self.clock_callback, qos_profile)
+        
+        self.create_subscription(Clock, '/clock', self.clock_callback, 10)
 
-        # IMU Subscription
-        self.create_subscription(Imu, '/acceleration', self.acceleration_callback, qos_profile)
+        # Subscription
+        self.create_subscription(Imu, '/acceleration', self.acceleration_callback,10)
 
         # Variables
         self.name = 'cylinder'
@@ -68,58 +67,36 @@ class ForceController(Node):
         self.time_sec += self.time_nanosec // (10**9)
         self.time_nanosec %= (10**9)
 
-    # def force_calculation(self):
-    #     """Calculate the force based on acceleration and mass."""
-    #     self.force_x = self.mass * self.acc_x
-    #     self.force_y = self.mass * self.acc_y
-    #     self.force_stack_x += self.force_x
-    #     self.force_stack_y += self.force_y
-    #     self.get_logger().info(f'Force calculation x: {self.force_x}, y: {self.force_y}')
-
-    def force_calculation_x(self):
+    def force_calculation(self):
         """Calculate the force based on acceleration and mass."""
         self.force_x = self.mass * self.acc_x
-        self.force_stack_x += self.force_x
-        self.get_logger().info(f'Force calculation x: {self.force_stack_x}')
-
-    def force_calculation_y(self):
-        """Calculate the force based on acceleration and mass."""
         self.force_y = self.mass * self.acc_y
+        self.force_stack_x += self.force_x
         self.force_stack_y += self.force_y
-        self.get_logger().info(f'Force calculation y: {self.force_stack_y}')
+        self.get_logger().info(f'Force calculation x: {self.force_x}, y: {self.force_y}')
+
+    # def force_calculation_x(self):
+    #     """Calculate the force based on acceleration and mass."""
+    #     self.force_x = self.mass * self.acc_x
+    #     self.force_stack_x += self.force_x
+    #     self.get_logger().info(f'Force calculation x: {self.force_stack_x}')
+
+    # def force_calculation_y(self):
+    #     """Calculate the force based on acceleration and mass."""
+    #     self.force_y = self.mass * self.acc_y
+    #     self.force_stack_y += self.force_y
+    #     self.get_logger().info(f'Force calculation y: {self.force_stack_y}')
 
     def acceleration_callback(self, msg: Imu):
         """Callback for IMU acceleration data."""
         self.acc_x = msg.linear_acceleration.x
         self.acc_y = msg.linear_acceleration.y
 
-        # Calculate acceleration magnitude
-        # magnitude = math.sqrt(self.acc_x**2 + self.acc_y**2)
-
-        # self.get_logger().info(f'Acceleration x: {self.acc_x}, y: {self.acc_y}')
-
-        # Apply force only if acceleration magnitude > 0.5
-        # self.get_logger().info(f'Stack Force x: {self.force_stack_x}, y: {self.force_stack_y}')
-        # if abs(self.acc_x) > 0.15 or abs(self.acc_y) > 0.15:            
-        #     if abs(self.acc_x) > 0.15:
-        #         self.get_logger().info(f'Acceleration x {abs(self.acc_x)} > 0.15')
-        #         self.force_calculation_x()
-
-        #     if abs(self.acc_y) > 0.15:
-        #         self.get_logger().info(f'Acceleration y {abs(self.acc_y)} > 0.15')
-        #         self.force_calculation_y()
-            
-        #     self.set_force()
         if abs(self.acc_x) > 0.15:
                 self.get_logger().info(f'Acceleration x {abs(self.acc_x)} > 0.15')
-                self.force_calculation_x()
+                self.force_calculation()
                 self.set_force()
         else:
-            # self.get_logger().info(f'Acceleration magnitude {abs(self.acc_y):.3f} <= 0.5, no force applied.')
-            # self.get_logger().info(f'Stack Force x: {self.force_stack_x}, y: {self.force_stack_y}')
-            # self.force_x = self.force_stack_x * -1
-            # self.force_y = self.force_stack_y * -1
-            
             if (self.force_stack_x > abs(0.0)):
                 self.get_logger().info(f'Stop Force x: {self.force_x*-1} !!!!!!!!!')
                 # self.force_x = self.force_stack_x * -1
@@ -127,8 +104,6 @@ class ForceController(Node):
             self.force_stack_x = 0.0
             self.force_stack_y = 0.0
             
-        # self.force_calculation()
-        # self.set_force()
 
     def clock_callback(self, msg: Clock):
         """Callback for simulation clock updates."""
