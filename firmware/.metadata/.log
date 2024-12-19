@@ -1,0 +1,57 @@
+!SESSION 2024-12-19 03:57:33.756 -----------------------------------------------
+eclipse.buildId=Version 1.16.1
+java.version=17.0.11
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-12-19 03:57:51.607
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-12-19 03:57:51.608
+!MESSAGE Log4j2 initialized with config file /home/kraiwich/imu_force_ws_main/firmware/.metadata/.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-12-19 03:57:55.214
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-12-19 03:58:26.976
+!MESSAGE Indexed 'nucleo_g474re' (44 sources, 155 headers) in 2.65 sec: 17,143 declarations; 88,872 references; 15 unresolved inclusions; 156 syntax errors; 216 unresolved names (0.2%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-12-19 03:58:28.634
+!MESSAGE Indexed 'nucleo_mpu6050' (45 sources, 158 headers) in 1.65 sec: 18,857 declarations; 101,036 references; 20 unresolved inclusions; 156 syntax errors; 282 unresolved names (0.23%)
+!SESSION 2024-12-19 04:00:11.603 -----------------------------------------------
+eclipse.buildId=Version 1.16.1
+java.version=17.0.11
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2024-12-19 04:00:14.029
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-12-19 04:00:17.334
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-12-19 04:00:17.335
+!MESSAGE Log4j2 initialized with config file /home/kraiwich/imu_force_ws_main/firmware/.metadata/.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-12-19 04:00:19.515
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2024-12-19 11:13:02.147 -----------------------------------------------
+eclipse.buildId=Version 1.16.1
+java.version=17.0.11
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-12-19 11:13:06.614
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-12-19 11:13:06.615
+!MESSAGE Log4j2 initialized with config file /home/kraiwich/imu_force_ws_main/firmware/.metadata/.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-12-19 11:13:11.189
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-12-19 11:14:57.961
+!MESSAGE Indexed 'ADXL345' (21 sources, 81 headers) in 1.72 sec: 4,947 declarations; 21,263 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0076%)
