@@ -19,6 +19,9 @@ ament_python_install_package(${PROJECT_NAME})
 install(PROGRAMS
   script/calibrate.py
   script/accel_read.py
+  script/imu_calibrate.py
+  script/imu_setup.py
+  script/accel_fillter.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
