@@ -2119,3 +2119,12 @@ java.lang.NullPointerException: Cannot invoke "javax.swing.JTextField.getText()"
 2024-12-19 11:14:56,651 [INFO] ApiDb:452 - User favorites MCUs=[]
 2024-12-19 11:14:56,652 [INFO] ApiDb:448 - Save user favorites file /home/kraiwich/.stm32cubeide/favorites.boards.txt: 0 item(s)
 2024-12-19 11:14:56,653 [INFO] ApiDb:452 - User favorites Boards=[]
+2024-12-19 11:24:16,893 [INFO] RtosManager:919 - Current active RTOS is FREERTOS [Cortex-M4NS]
+2024-12-19 11:24:17,181 [WARN] FreeRTOS:563 - Case being investigated as it may cause exception (when called to early by set config state
+2024-12-19 11:24:17,324 [ERROR] RtosPanel:558 - Can not restore the selected Tab for FREERTOS(A reason can be that the tab is no more available.)
+2024-12-19 11:24:17,374 [ERROR] RtosPanel:558 - Can not restore the selected Tab for FREERTOS(A reason can be that the tab is no more available.)
+2024-12-19 11:24:32,857 [INFO] TasksAndQueuesTab:757 - Dynamic
+2024-12-19 11:24:32,857 [WARN] TasksAndQueuesTab:763 - 128 128
+2024-12-19 11:24:32,857 [WARN] TasksAndQueuesTab:775 - max value is: 768.0
+2024-12-19 11:24:35,384 [INFO] EditThreadDialog:704 - RAM SIZE (in KB): 128
+2024-12-19 11:24:35,384 [INFO] EditThreadDialog:706 - RAM SIZE (in words): 32768
