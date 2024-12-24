@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(imu_filter)
+project(object_simulation)
 
 # Default to C99
 if(NOT CMAKE_C_STANDARD)
@@ -27,8 +27,7 @@ ament_python_install_package(${PROJECT_NAME})
 
 # Install Python executables
 install(PROGRAMS
-  scripts/imu_calibrate.py
-  scripts/imu_filter.py
+  scripts/dummy_script.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
@@ -48,7 +47,8 @@ install(TARGETS
 
 ################ INSTALL LAUNCH, ETC #################
 install(DIRECTORY
-  config
+  model
+  launch
   # add directories here
   DESTINATION share/${PROJECT_NAME})
 

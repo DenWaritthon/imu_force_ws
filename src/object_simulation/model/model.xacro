@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="my_model">
+
+	<!-- Include the Gazebo definitions  -->
+	<xacro:include filename="gazebo.xacro"/>
+
+	<link name="model">
+		<visual>
+			<geometry>
+				<box size="0.024 0.048 0.014"/>
+			</geometry>
+			<origin rpy="0 0 0" xyz="0 0 0"/>					
+		</visual>
+		
+		<collision>
+			<geometry>
+				<box size="0.024 0.048 0.014"/>
+			</geometry>
+		</collision>
+
+		<xacro:inertial_box mass="0.02" x="0.024" y="0.048" z="0.014">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+		</xacro:inertial_box>
+			
+	</link>	
+
+	<!-- <link name="cylinder">
+		<visual>
+			<geometry>
+				<cylinder length="0.06" radius="0.032"/>
+			</geometry>
+			<origin rpy="0 0 0" xyz="0 0 0"/>					
+		</visual>
+		
+		<collision>
+			<geometry>
+				<cylinder length="0.06" radius="0.032"/>
+			</geometry>
+		</collision>
+		
+		<xacro:inertial_cylinder mass="0.02" length="0.06" radius="0.032">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+		</xacro:inertial_cylinder>
+		
+	</link>	 -->
+
+</robot>
