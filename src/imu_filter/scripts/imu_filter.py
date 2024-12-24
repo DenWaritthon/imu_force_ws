@@ -30,6 +30,7 @@ class ImuFilterNode(Node):
         # publisher
         self.imu_offset_pub = self.create_publisher(Imu, 'imu_offset', 10) 
         self.imu_filter_pub = self.create_publisher(Imu, 'imu_filter', 10)
+        self.acceleration_pub = self.create_publisher(Imu, 'acceleration', 10)
 
         # Subscription
         qos_profile = QoSProfile(reliability = ReliabilityPolicy.BEST_EFFORT,depth = 10)
@@ -49,7 +50,7 @@ class ImuFilterNode(Node):
         self.filter_acc = [0.0, 0.0, 0.0]
         self.filter_gyro = [0.0, 0.0, 0.0]
 
-        self.a = 0.1
+        self.a = 0.5
 
         self.get_logger().info(f'Node Imu Filter Node Start!!!')
 
@@ -64,6 +65,14 @@ class ImuFilterNode(Node):
         self.filter_acc[0] = (self.a * self.acc[0]) + ((1 - self.a) * self.filter_acc[0])
         self.filter_acc[1] = (self.a * self.acc[1]) + ((1 - self.a) * self.filter_acc[1])
         self.filter_acc[2] = (self.a * self.acc[2]) + ((1 - self.a) * self.filter_acc[2])
+
+    def acceleration_publisher(self):
+        msg = Imu()
+
+        msg.linear_acceleration.x = round(self.acc[0], 2)
+        msg.linear_acceleration.y = round(self.acc[1], 2)
+
+        self.acceleration_pub.publish(msg)
 
     def imu_filter_publisher(self):
         msg = Imu()
@@ -114,6 +123,7 @@ class ImuFilterNode(Node):
 
         self.iir_filter()
         self.imu_filter_publisher()
+        self.acceleration_publisher()
 
 def main(args=None):
     rclpy.init(args=args)

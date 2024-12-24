@@ -16,36 +16,31 @@ class ForceController(Node):
         # Service client
         self.force_client = self.create_client(ApplyLinkWrench, '/apply_link_wrench')
         
-        
-
         # Subscription
-        self.create_subscription(Imu, '/acceleration', self.acceleration_callback,10)
+        self.create_subscription(Imu, 'acceleration', self.acceleration_callback,10)
         qos_profile = QoSProfile(reliability = ReliabilityPolicy.BEST_EFFORT,depth = 10)
         self.create_subscription(Clock, '/clock', self.clock_callback, qos_profile)
 
         # Variables
-        self.name = 'cylinder'
-        self.force_x = 0.0
-        self.force_y = 0.0
-        self.force_stack_x = 0.0
-        self.force_stack_y = 0.0
-
-        self.mass = 0.02 # Mass of the cylinder in kg
-
+        self.name = 'model'
+        self.mass = 0.2 # Mass in kg
+               
         self.acc_x = 0.0
         self.acc_y = 0.0
 
+        self.force_x = 0.0
+        self.force_y = 0.0
+        
         self.time_sec = 0.0
         self.time_nanosec = 0.0
 
         self.get_logger().info(f'Node Force Controller Start!!!')
 
     def set_force(self):
-        """Prepare and send the ApplyLinkWrench request."""
         msg = ApplyLinkWrench.Request()
 
         msg.link_name = self.name
-        msg.reference_frame = 'world'  # Apply force in world frame for consistency
+        msg.reference_frame = self.name
 
         msg.wrench.force.x = self.force_x
         msg.wrench.force.y = self.force_y
@@ -54,63 +49,34 @@ class ForceController(Node):
         msg.start_time.sec = int(self.time_sec)
         msg.start_time.nanosec = int(self.time_nanosec)
 
-        msg.duration.sec = 0
-        msg.duration.nanosec = 1_000_000  # Apply force for 1 ms
-
         self.force_client.call_async(msg)
 
-        # self.get_logger().info(f'Force applied x: {self.force_x}, y: {self.force_y}')
-        # self.get_logger().info(f'Force applied y: {self.force_y}')
-        self.get_logger().info(f'Start at: {self.time_sec} sec, {self.time_nanosec} nanosec')
+        self.get_logger().info(f'force apply x : {self.force_x}, force apply y : {self.force_y}')
+        # self.get_logger().info(f'start at: {self.time_sec} sec, {self.time_nanosec} nanosec')
 
-    def set_time(self):
-        """Synchronize start time with simulation clock."""
-        self.time_nanosec += 1 * (10**9)
+    def  set_time(self):
+        self.time_nanosec +=  1* (10**9)
         self.time_sec += self.time_nanosec // (10**9)
         self.time_nanosec %= (10**9)
 
-    def force_calculation(self):
-        """Calculate the force based on acceleration and mass."""
+    def force_calcalation(self):
         self.force_x = self.mass * self.acc_x
         self.force_y = self.mass * self.acc_y
-        self.force_stack_x += self.force_x
-        self.force_stack_y += self.force_y
-        self.get_logger().info(f'Force calculation x: {self.force_x}, y: {self.force_y}')
+        # self.get_logger().info(f'force calcalation x : {self.force_x}, force calcalation y : {self.force_y}')
 
-    # def force_calculation_x(self):
-    #     """Calculate the force based on acceleration and mass."""
-    #     self.force_x = self.mass * self.acc_x
-    #     self.force_stack_x += self.force_x
-    #     self.get_logger().info(f'Force calculation x: {self.force_stack_x}')
-
-    # def force_calculation_y(self):
-    #     """Calculate the force based on acceleration and mass."""
-    #     self.force_y = self.mass * self.acc_y
-    #     self.force_stack_y += self.force_y
-    #     self.get_logger().info(f'Force calculation y: {self.force_stack_y}')
-
-    def acceleration_callback(self, msg: Imu):
-        """Callback for IMU acceleration data."""
+    def acceleration_callback(self, msg:Imu):
         self.acc_x = msg.linear_acceleration.x
         self.acc_y = msg.linear_acceleration.y
+        # self.get_logger().info(f'acceleration x : {self.acc_x}, acceleration y : {self.acc_y}')
+        self.force_calcalation()
 
-        if abs(self.acc_x) > 0.05 :
-                self.get_logger().info(f'Acceleration x {abs(self.acc_x)} > 0.05')
-                self.force_calculation()
-                self.set_force()
-        else:
-            if (self.force_stack_x > abs(0.0)):
-                self.get_logger().info(f'Stop Force x: {self.force_x*-1} !!!!!!!!!')
-                # self.force_x = self.force_stack_x * -1
-                # self.set_force()
-            self.force_stack_x = 0.0
-            self.force_stack_y = 0.0
-            
+        if abs(self.force_x) > 0.02 or abs(self.force_y) > 0.02:
+            self.set_force()
 
-    def clock_callback(self, msg: Clock):
-        """Callback for simulation clock updates."""
+    def clock_callback(self, msg:Clock):
         self.time_sec = msg.clock.sec
         self.time_nanosec = msg.clock.nanosec
+        # self.get_logger().info(f'clock : {self.time_sec} sec, {self.time_nanosec} nanosec')
 
 
 def main(args=None):
