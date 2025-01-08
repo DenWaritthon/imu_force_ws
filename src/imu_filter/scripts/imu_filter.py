@@ -50,7 +50,7 @@ class ImuFilterNode(Node):
         self.filter_acc = [0.0, 0.0, 0.0]
         self.filter_gyro = [0.0, 0.0, 0.0]
 
-        self.a = 0.
+        self.a = 0.5
 
         self.get_logger().info(f'Node Imu Filter Node Start!!!')
 
