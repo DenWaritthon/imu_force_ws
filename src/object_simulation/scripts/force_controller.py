@@ -65,12 +65,12 @@ class ForceController(Node):
         # self.get_logger().info(f'force calcalation x : {self.force_x}, force calcalation y : {self.force_y}')
 
     def acceleration_callback(self, msg:Imu):
-        self.acc_x = msg.linear_acceleration.x
+        self.acc_x = msg.linear_acceleration.x * -1
         self.acc_y = msg.linear_acceleration.y
         # self.get_logger().info(f'acceleration x : {self.acc_x}, acceleration y : {self.acc_y}')
         self.force_calcalation()
 
-        if abs(self.force_x) > 0.02 or abs(self.force_y) > 0.02:
+        if round(abs(self.force_x),2) > 0.02 or round(abs(self.force_y),2) > 0.02:
             self.set_force()
 
     def clock_callback(self, msg:Clock):

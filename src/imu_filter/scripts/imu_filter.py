@@ -50,7 +50,7 @@ class ImuFilterNode(Node):
         self.filter_acc = [0.0, 0.0, 0.0]
         self.filter_gyro = [0.0, 0.0, 0.0]
 
-        self.a = 0.5
+        self.a = 0.
 
         self.get_logger().info(f'Node Imu Filter Node Start!!!')
 
@@ -69,8 +69,8 @@ class ImuFilterNode(Node):
     def acceleration_publisher(self):
         msg = Imu()
 
-        msg.linear_acceleration.x = round(self.acc[0], 2)
-        msg.linear_acceleration.y = round(self.acc[1], 2)
+        msg.linear_acceleration.x = round(self.filter_acc[0], 2)
+        msg.linear_acceleration.y = round(self.filter_acc[1], 2)
 
         self.acceleration_pub.publish(msg)
 
