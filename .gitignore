@@ -3,3 +3,4 @@ build
 install
 src/.vscode
 .vscode
+src/imu_filter/config/imu_calibration.yaml

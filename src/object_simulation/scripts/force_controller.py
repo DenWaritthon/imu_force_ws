@@ -70,7 +70,7 @@ class ForceController(Node):
         # self.get_logger().info(f'acceleration x : {self.acc_x}, acceleration y : {self.acc_y}')
         self.force_calcalation()
 
-        if round(abs(self.force_x),2) > 0.02 or round(abs(self.force_y),2) > 0.02:
+        if round(abs(self.force_x),2) > 0.1 or round(abs(self.force_y),2) > 0.1:
             self.set_force()
 
     def clock_callback(self, msg:Clock):
