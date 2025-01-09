@@ -79,10 +79,16 @@ class ForceController(Node):
         self.force_calcalation()
 
         if self.diff_x > 0.5 or self.diff_y > 0.5:
+            self.get_logger().info(f'diff pose x : {self.diff_x}, diff pose y : {self.diff_y}, diff pose z : {self.diff_z}')
+            
             if round(self.force_x, 2) > 0.1 or round(self.force_y, 2) > 0.1: # If the force is greater than 0.02, apply the force
                 self.force_x = self.force_x * self.diff_x * self.k_gain
                 self.force_y = self.force_y * self.diff_y * self.k_gain
-                self.set_force()
+            else:
+                self.force_x = 0.02 * self.diff_x * self.k_gain
+                self.force_y = 0.02 * self.diff_y * self.k_gain
+
+            self.set_force()
             
     def clock_callback(self, msg: Clock):
         self.time_sec = msg.clock.sec

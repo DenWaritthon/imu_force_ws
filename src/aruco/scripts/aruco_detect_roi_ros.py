@@ -27,7 +27,7 @@ class ArucoDetectNode(Node):
 
         self.timer = self.create_timer(0.1, self.timer_callback)
 
-        json_file_path = 'src/aruco/config/calibration.json'
+        json_file_path = 'src/aruco/config/calibration_webcam.json'
         with open(json_file_path, 'r') as file:
             json_data = json.load(file)
 
@@ -116,21 +116,22 @@ class ArucoDetectNode(Node):
 
                     object_width_cm = w / (300 / 25.4) / 10
                     object_height_cm = h / (300 / 25.4) / 10
-                    cv2.putText(roi, f'Pos: (x: {x}, y: {y})', (x, y + h + 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
 
                     object_center_x = x + w // 2
                     object_center_y = y + h // 2
                     cv2.circle(roi, (object_center_x, object_center_y), 4, (255, 0, 0), -1)
                     cv2.line(roi, (object_center_x, 0), (object_center_x, roi.shape[0]), (0, 255, 0), 2)
                     cv2.line(roi, (0, object_center_y), (roi.shape[1], object_center_y), (0, 0, 255), 2)
-                    cv2.putText(roi, '0,0', (0, 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
+                    # cv2.putText(roi, '0,0', (0, 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
+                    cv2.putText(roi, f'Pos: (x: {object_center_x - roi_width_px // 2}, y: {object_center_y - roi_height_px // 2})', (x, y + h + 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
+
 
                     gain_axis_x = self.real_axis_x / roi_width_px 
                     gain_axis_y = self.real_axis_y / roi_height_px 
 
                     object_pose = Point()
-                    object_pose.x = float(f"{x * gain_axis_x:.2f}")
-                    object_pose.y = float(f"{y * gain_axis_y:.2f}")
+                    object_pose.x = float(f"{(object_center_x - roi_width_px // 2) * gain_axis_x:.2f}")
+                    object_pose.y = float(f"{(object_center_y - roi_height_px // 2) * gain_axis_y:.2f}")
                     object_pose.z = 0.0
                     self.object_pose_pub.publish(object_pose)
 
