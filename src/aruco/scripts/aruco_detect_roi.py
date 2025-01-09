@@ -156,7 +156,7 @@ while running:
     # Convert the ROI to RGB format, flip it horizontally, and resize it to fit the pygame window
     if 'roi' in locals():
         roi = cv2.flip(roi, 1)  # Flip the ROI horizontally
-        roi_rgb = cv2.cvtColor(roi, cv2.COLOR_BGR2RGB)
+        roi_rgb = cv2.cvtColor(roi.astype(np.uint8), cv2.COLOR_BGR2RGB)
         roi_rgb = cv2.resize(roi_rgb, (640, 480))
         roi_rgb = np.rot90(roi_rgb)
         roi_rgb = pygame.surfarray.make_surface(roi_rgb)
