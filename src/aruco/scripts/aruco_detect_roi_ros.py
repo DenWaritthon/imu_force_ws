@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import cv2
 import numpy as np
 import json
@@ -44,6 +46,9 @@ class ArucoDetectNode(Node):
         self.screen = pygame.display.set_mode((1280, 480))
         pygame.display.set_caption("Webcam Feed")
 
+        #logger
+        self.get_logger().info(f'Node Aruco Detect Start!!!')
+
     def timer_callback(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -89,7 +94,6 @@ class ArucoDetectNode(Node):
                 marker_height_px = np.linalg.norm(np.array(topLeft) - np.array(bottomLeft))
                 marker_width_cm = marker_width_px / (300 / 25.4) / 10
                 marker_height_cm = marker_height_px / (300 / 25.4) / 10
-                # cv2.putText(frame, f'Size: {marker_width_cm:.2f}x{marker_height_cm:.2f} cm', (topLeft[0], topLeft[1] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 
                 roi = frame[topLeft[1]:bottomRight[1], topLeft[0]:bottomRight[0]]
 
@@ -98,7 +102,6 @@ class ArucoDetectNode(Node):
                 roi_width_cm = roi_width_px / (300 / 25.4) / 10
                 roi_height_cm = roi_height_px / (300 / 25.4) / 10
                 cv2.putText(frame, f'ROI Size: {roi_width_px}px x {roi_height_px}px', (topLeft[0], topLeft[1] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 255), 2)
-                # cv2.putText(frame, f'ROI Size: {roi_width_cm:.2f}x{roi_height_cm:.2f} cm', (topLeft[0], topLeft[1] - 30), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 255), 2)
 
                 hsv = cv2.cvtColor(roi, cv2.COLOR_BGR2HSV)
                 lower_black = np.array([0, 0, 0])
@@ -113,7 +116,6 @@ class ArucoDetectNode(Node):
 
                     object_width_cm = w / (300 / 25.4) / 10
                     object_height_cm = h / (300 / 25.4) / 10
-                    # cv2.putText(roi, f'Size: {object_width_cm:.2f}x{object_height_cm:.2f} cm', (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 255), 2)
                     cv2.putText(roi, f'Pos: (x: {x}, y: {y})', (x, y + h + 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
 
                     object_center_x = x + w // 2

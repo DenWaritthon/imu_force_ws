@@ -188,8 +188,14 @@ void setup()
 
   allocator = rcl_get_default_allocator();
 
-  RCCHECK(rclc_support_init(&support, 0, NULL, &allocator));
-  RCCHECK(rclc_node_init_default(&node, "micro_ros_platformio_node", "", &support));
+  // Set domain ID to 50
+  rcl_init_options_t init_options = rcl_get_zero_initialized_init_options();
+  RCCHECK(rcl_init_options_init(&init_options, allocator));
+  RCCHECK(rcl_init_options_set_domain_id(&init_options, 50));
+  RCCHECK(rclc_support_init_with_options(&support, 0, NULL, &init_options, &allocator));
+  RCCHECK(rcl_init_options_fini(&init_options));
+
+  RCCHECK(rclc_node_init_default(&node, "M5StickC_IMU_node", "", &support));
   RCCHECK(rclc_publisher_init_default(
       &publisher,
       &node,

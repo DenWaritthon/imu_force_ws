@@ -29,6 +29,7 @@ ament_python_install_package(${PROJECT_NAME})
 install(PROGRAMS
   scripts/force_controller.py
   scripts/model_position.py
+  scripts/aruco_controller.py
   DESTINATION lib/${PROJECT_NAME}
 )
 

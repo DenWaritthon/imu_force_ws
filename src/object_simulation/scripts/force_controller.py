@@ -4,8 +4,9 @@ import rclpy
 from rclpy.node import Node
 from gazebo_msgs.srv import ApplyLinkWrench
 from sensor_msgs.msg import Imu
+from geometry_msgs.msg import Point
 from rosgraph_msgs.msg import Clock
-from rclpy.qos import QoSProfile ,ReliabilityPolicy
+from rclpy.qos import QoSProfile, ReliabilityPolicy
 import math  # Import math for sqrt calculation
 
 
@@ -17,13 +18,13 @@ class ForceController(Node):
         self.force_client = self.create_client(ApplyLinkWrench, '/apply_link_wrench')
         
         # Subscription
-        self.create_subscription(Imu, 'acceleration', self.acceleration_callback,10)
-        qos_profile = QoSProfile(reliability = ReliabilityPolicy.BEST_EFFORT,depth = 10)
+        self.create_subscription(Imu, 'acceleration', self.acceleration_callback, 10)
+        qos_profile = QoSProfile(reliability=ReliabilityPolicy.BEST_EFFORT, depth=10)
         self.create_subscription(Clock, '/clock', self.clock_callback, qos_profile)
 
         # Variables
         self.name = 'model'
-        self.mass = 0.2 # Mass in kg
+        self.mass = 0.2  # Mass in kg
                
         self.acc_x = 0.0
         self.acc_y = 0.0
@@ -54,8 +55,8 @@ class ForceController(Node):
         self.get_logger().info(f'force apply x : {self.force_x}, force apply y : {self.force_y}')
         # self.get_logger().info(f'start at: {self.time_sec} sec, {self.time_nanosec} nanosec')
 
-    def  set_time(self):
-        self.time_nanosec +=  1* (10**9)
+    def set_time(self):
+        self.time_nanosec += 1 * (10**9)
         self.time_sec += self.time_nanosec // (10**9)
         self.time_nanosec %= (10**9)
 
@@ -64,20 +65,19 @@ class ForceController(Node):
         self.force_y = self.mass * self.acc_y
         # self.get_logger().info(f'force calcalation x : {self.force_x}, force calcalation y : {self.force_y}')
 
-    def acceleration_callback(self, msg:Imu):
+    def acceleration_callback(self, msg: Imu):
         self.acc_x = msg.linear_acceleration.x * -1
         self.acc_y = msg.linear_acceleration.y
         # self.get_logger().info(f'acceleration x : {self.acc_x}, acceleration y : {self.acc_y}')
         self.force_calcalation()
 
-        if round(abs(self.force_x),2) > 0.1 or round(abs(self.force_y),2) > 0.1:
+        if round(abs(self.force_x), 2) > 0.1 or round(abs(self.force_y), 2) > 0.1:
             self.set_force()
 
-    def clock_callback(self, msg:Clock):
+    def clock_callback(self, msg: Clock):
         self.time_sec = msg.clock.sec
         self.time_nanosec = msg.clock.nanosec
         # self.get_logger().info(f'clock : {self.time_sec} sec, {self.time_nanosec} nanosec')
-
 
 def main(args=None):
     rclpy.init(args=args)
