@@ -21,6 +21,7 @@ class ForceController(Node):
         self.create_subscription(Imu, 'acceleration', self.acceleration_callback, 10)
         qos_profile = QoSProfile(reliability=ReliabilityPolicy.BEST_EFFORT, depth=10)
         self.create_subscription(Clock, '/clock', self.clock_callback, qos_profile)
+        self.create_subscription(Point, '/diff_pose', self.diff_pose_callback, 10)
 
         # Variables
         self.name = 'model'
@@ -34,6 +35,12 @@ class ForceController(Node):
         
         self.time_sec = 0.0
         self.time_nanosec = 0.0
+
+        self.diff_x = 0.0
+        self.diff_y = 0.0
+        self.diff_z = 0.0
+
+        self.k_gain = 0.01
 
         self.get_logger().info(f'Node Force Controller Start!!!')
 
@@ -61,8 +68,8 @@ class ForceController(Node):
         self.time_nanosec %= (10**9)
 
     def force_calcalation(self):
-        self.force_x = self.mass * self.acc_x
-        self.force_y = self.mass * self.acc_y
+        self.force_x = abs(self.mass * self.acc_x)
+        self.force_y = abs(self.mass * self.acc_y)
         # self.get_logger().info(f'force calcalation x : {self.force_x}, force calcalation y : {self.force_y}')
 
     def acceleration_callback(self, msg: Imu):
@@ -71,13 +78,22 @@ class ForceController(Node):
         # self.get_logger().info(f'acceleration x : {self.acc_x}, acceleration y : {self.acc_y}')
         self.force_calcalation()
 
-        if round(abs(self.force_x), 2) > 0.1 or round(abs(self.force_y), 2) > 0.1:
-            self.set_force()
-
+        if self.diff_x > 0.5 or self.diff_y > 0.5:
+            if round(self.force_x, 2) > 0.1 or round(self.force_y, 2) > 0.1: # If the force is greater than 0.02, apply the force
+                self.force_x = self.force_x * self.diff_x * self.k_gain
+                self.force_y = self.force_y * self.diff_y * self.k_gain
+                self.set_force()
+            
     def clock_callback(self, msg: Clock):
         self.time_sec = msg.clock.sec
         self.time_nanosec = msg.clock.nanosec
         # self.get_logger().info(f'clock : {self.time_sec} sec, {self.time_nanosec} nanosec')
+    
+    def diff_pose_callback(self, msg: Point):
+        self.diff_x = msg.x
+        self.diff_y = msg.y
+        self.diff_z = msg.z
+        # self.get_logger().info(f'diff pose x : {self.diff_x}, diff pose y : {self.diff_y}, diff pose z : {self.diff_z}')
 
 def main(args=None):
     rclpy.init(args=args)
