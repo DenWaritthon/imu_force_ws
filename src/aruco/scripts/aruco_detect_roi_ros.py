@@ -130,8 +130,8 @@ class ArucoDetectNode(Node):
                     gain_axis_y = self.real_axis_y / roi_height_px 
 
                     object_pose = Point()
-                    object_pose.x = float(f"{(object_center_x - roi_width_px // 2) * gain_axis_x:.2f}")
-                    object_pose.y = float(f"{(object_center_y - roi_height_px // 2) * gain_axis_y:.2f}")
+                    object_pose.x = float(f"{((object_center_x - roi_width_px // 2) * gain_axis_x * -1):.2f}")
+                    object_pose.y = float(f"{((object_center_y - roi_height_px // 2) * gain_axis_y):.2f}")
                     object_pose.z = 0.0
                     self.object_pose_pub.publish(object_pose)
 

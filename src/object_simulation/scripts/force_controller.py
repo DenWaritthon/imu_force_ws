@@ -40,7 +40,7 @@ class ForceController(Node):
         self.diff_y = 0.0
         self.diff_z = 0.0
 
-        self.k_gain = 0.01
+        # self.k_gain = 0.01
 
         self.get_logger().info(f'Node Force Controller Start!!!')
 
@@ -73,22 +73,24 @@ class ForceController(Node):
         # self.get_logger().info(f'force calcalation x : {self.force_x}, force calcalation y : {self.force_y}')
 
     def acceleration_callback(self, msg: Imu):
-        self.acc_x = msg.linear_acceleration.x * -1
+        self.acc_x = msg.linear_acceleration.x
         self.acc_y = msg.linear_acceleration.y
         # self.get_logger().info(f'acceleration x : {self.acc_x}, acceleration y : {self.acc_y}')
-        self.force_calcalation()
 
-        if self.diff_x > 0.5 or self.diff_y > 0.5:
-            self.get_logger().info(f'diff pose x : {self.diff_x}, diff pose y : {self.diff_y}, diff pose z : {self.diff_z}')
+        if abs(self.diff_x) > 0.5 or abs(self.diff_y) > 0.5:
+            self.get_logger().info(f'diff pose x : {self.diff_x}, diff pose y : {self.diff_y}')
+            self.force_calcalation()
             
-            if round(self.force_x, 2) > 0.1 or round(self.force_y, 2) > 0.1: # If the force is greater than 0.02, apply the force
-                self.force_x = self.force_x * self.diff_x * self.k_gain
-                self.force_y = self.force_y * self.diff_y * self.k_gain
+            if round(self.force_x, 2) > 0.02 or round(self.force_y, 2) > 0.02: # If the force is greater than 0.02, apply the force
+                self.force_x = self.force_x * (self.diff_x) * 0.01 #self.k_gain
+                self.force_y = self.force_y * (self.diff_y) * 0.01#self.k_gainrce
+                self.get_logger().info(f'IMU Force')
+                self.set_force()
             else:
-                self.force_x = 0.02 * self.diff_x * self.k_gain
-                self.force_y = 0.02 * self.diff_y * self.k_gain
-
-            self.set_force()
+                self.force_x = 0.02 * self.diff_x * 0.01 #self.k_gain
+                self.force_y = 0.02 * self.diff_y * 0.01 #self.k_gain
+                self.get_logger().info(f'Add Force')
+                self.set_force()
             
     def clock_callback(self, msg: Clock):
         self.time_sec = msg.clock.sec
@@ -96,9 +98,9 @@ class ForceController(Node):
         # self.get_logger().info(f'clock : {self.time_sec} sec, {self.time_nanosec} nanosec')
     
     def diff_pose_callback(self, msg: Point):
-        self.diff_x = msg.x
-        self.diff_y = msg.y
-        self.diff_z = msg.z
+        self.diff_x = msg.x * -1
+        self.diff_y = msg.y * -1
+        # self.diff_z = msg.z * -1
         # self.get_logger().info(f'diff pose x : {self.diff_x}, diff pose y : {self.diff_y}, diff pose z : {self.diff_z}')
 
 def main(args=None):

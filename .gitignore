@@ -1,7 +1,6 @@
 log 
 build
 install
-src/.vscode
 .vscode
 calibration_images
 
