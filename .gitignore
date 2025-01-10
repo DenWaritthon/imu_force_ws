@@ -5,4 +5,4 @@ install
 calibration_images
 
 # Ignore all files and directories under src/imu_filter/config
-src/aruco/config
+# src/aruco/config 

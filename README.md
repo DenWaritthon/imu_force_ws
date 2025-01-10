@@ -18,7 +18,7 @@ This repository focuses on developing firmware and implementing signal-processin
 - **Working environment**
   - The operation will be performed under the A4 size test area with the Web camera set up 0.3 m above the paper.
   
-  `ใส่รูปสภาพแวดล้อม`
+  ![working-environment](image/environment.jpg)
 
 # User installation guide 
 
@@ -60,7 +60,7 @@ Given
 
 ## Newton's equations
 
-Convert the velocity obtained from the IMU into a force to apply to the object in Guzabo using Newton's equations.
+Convert the accelration value obtained from the IMU into a force to apply to the object in Gazabo using Newton's equations.
 ```math
 \sum F = ma
 ```
@@ -71,11 +71,11 @@ Given
 - $a$ is the acceleration measured by the IMU
 
 ## Aruco
-ArUco functions to detect an area from an ArUco Marker by using its four corners to define a working area and detect black objects. Once the area of interest is identified, a point is created at the center of the area to serve as the origin (0,0), and the position of the black object within that area is then detected.
+Aruco functions to detect an area from an Aruco Marker by using its four corners to define a working area and detect black objects. Once the area of interest is identified, a point is created at the center of the area to serve as the origin (0,0), and the position of the black object within that area is then detected.
 
 # System architecture 
 
-`ใส่รูป System architecture`
+![System architecture](image/System%20architecture.png)
 
 System separate the work into sub-node that work differently 8 node consist of
 
@@ -89,7 +89,7 @@ System separate the work into sub-node that work differently 8 node consist of
   
 - **aruco_controller** is a Node that have input from aruco_detect_node and gazebo_node to calculation difference position and Pub topic : /diff_pose to Force_control_node. 
   
-- **Force_control_node** is a Node that get input of accelerate value from Node : imu_filter_node to calculate in Newton's equations and get input of difference between actual position and position in Gazebo from Node : aruco_controller to control Object by Servive :/apply_link_wrench of Gazebo.
+- **Force_control_node** is a Node that get input of acceleration value from Node : imu_filter_node to calculate in Newton's equations and get input of difference between actual position and position in Gazebo from Node : aruco_controller to control Object by Servive :/apply_link_wrench of Gazebo.
   
 - **Gazebo_node**  Node of Gazebo program that will be display result of the system that have Topic : /Odom for display the position of the Object on Ground_truth.
   
@@ -104,6 +104,9 @@ cd imu_force_ws/
 colcon build
 source install/setup.bash
 ```
+## Before use
+To use need to build ChAruco first by go to `src/aruco/scripts/python_file_Webcame/Gen_board.py` will get ChArUco_Marker_A4.pdf file. Then print it out and take a picture by the file `src/aruco/scripts/python_file_Webcame/cap.py` to take a picture in a lots of angle and posture to Calibrate to make the camera accurate
+After take the picture use the file `src/aruco/scripts/python_file_Webcame/Calibration.py` to find the parameter to use in the next process
 
 ## How to use simulation
 
@@ -151,9 +154,16 @@ ros2 topic echo /object_pose
 
 # Demos and Result
 
+### Tutorial clip
+[![Tutorial](image/tutorial_clip.png)](https://youtu.be/sxrNIdpBcrk)
+
+### Demo clip
+[![DEMO](image/Test_Clip.png)](https://youtu.be/xE71JFptJdc)
+
 
 # Conclusion
-
+From testing the system that use only IMU make the object not stop and move by itself but in the real world the object did’t move. So we use position from Aruco integrated with IMU to adjust the position of the object in Gazebo to make it similar to the real world. Firstly get a acceleration value from the IMU and convert it to force that do to the IMU to control the object in the first place. After the IMU don’t have any acceleration but the object was not at the target then use the Aruco to posion control to make the object in Gazebo was at the right target.
+The result of testing the object in gazebo move to the target  but the system not consistent to the objective that use IMU as main sensor. 
 
 # Future plan
 - Explore advanced filtering algorithms (e.g., Kalman filters) for improved accuracy and robustness.

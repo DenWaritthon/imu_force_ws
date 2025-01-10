@@ -49,9 +49,9 @@ def get_calibration_parameters(img_dir):
     return mtx, dist
 
 SENSOR = 'logitech_c920'
-OUTPUT_JSON = 'calibration.json'
+OUTPUT_JSON = 'src/aruco/config/calibration_webcam.json'
 
-mtx, dist = get_calibration_parameters(img_dir='image')
+mtx, dist = get_calibration_parameters(img_dir='calibration_images')
 data = {"sensor": SENSOR, "mtx": mtx.tolist(), "dist": dist.tolist()}
 
 with open(OUTPUT_JSON, 'w') as json_file:
