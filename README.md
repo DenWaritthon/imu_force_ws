@@ -71,7 +71,7 @@ Given
 - $a$ is the acceleration measured by the IMU
 
 ## Aruco
-
+ArUco functions to detect an area from an ArUco Marker by using its four corners to define a working area and detect black objects. Once the area of interest is identified, a point is created at the center of the area to serve as the origin (0,0), and the position of the black object within that area is then detected.
 
 # System architecture 
 
@@ -79,19 +79,19 @@ Given
 
 System separate the work into sub-node that work differently 8 node consist of
 
-- **M5StickC_IMU_node (Micro Ros)**
+- **M5StickC_IMU_node (Micro Ros)** is a node that have input value from IMU and Pub the value to Topic : /IMU_publisher to the node IMU_calibrate_node and lowpass_accel_collector_node.
   
 - **imu_calibration_node** is a Node that have input value from IMU_node (Micro ROS) to Calibrate value of the IMU to make it more accurate.
   
 - **imu_filter_node** is a Node that have a input value from M5StickC_IMU_node (Micro Ros) after Calibate the value then the accelerate value by Pub Topic : /acceleration to Node Force_control_node.
   
-- **aruco_detect_node**
+- **aruco_detect_node** is a Node that have input image from webcam for detect Black object (Now is a M5StickCPlus) to make localization from Aruco Area to Pub Topic : /object_pos to aruco_controller node.
   
-- **aruco_controller**
+- **aruco_controller** is a Node that have input from aruco_detect_node and gazebo_node to calculation difference position and Pub topic : /diff_pose to Force_control_node. 
   
 - **Force_control_node** is a Node that get input of accelerate value from Node : imu_filter_node to calculate in Newton's equations and get input of difference between actual position and position in Gazebo from Node : aruco_controller to control Object by Servive :/apply_link_wrench of Gazebo.
   
-- **Gazebo_node**
+- **Gazebo_node**  Node of Gazebo program that will be display result of the system that have Topic : /Odom for display the position of the Object on Ground_truth.
   
 - **model_position_node** is a Node that have input value from Node : Gazebo_node to calculate model position.
   
@@ -111,41 +111,42 @@ Before starting the operation after setting up the environment.
 
 - **Run caliblate IMU**
 ``` bash
-ros2 run
+ros2 run imu_filter imu_calibrate.py
 ```
 
 Run the simulation in ROS2.
 
 - **Run Gazebo simulation**
 ``` bash
-ros2 launch imu_force_gazebo 
+ros2 launch object_simulation model_display.launch.py
 ```
 
 - **Run IMU filter**
 ``` bash
-ros2 run
+ros2 run imu_filter imu_filter.py
 ```
 
 - **Run Aruco**
 ``` bash
-ros2 run
+ros2 run aruco aruco_detect_roi_ros.py
 ```
 
-- **Run Force controller**
+- **Run Force controller** 
+Always execute/perform last
 ``` bash
-ros2 run
+ros2 run object_simulation force_controller.py
 ```
 
 Check the position of objects in the Gazebo and the real world.
 
 - **In Gazebo**
 ``` bash
-ros2 run
+ros2 run object_simulation model_position.py 
 ```
 
 - **In real world**
 ``` bash
-ros2 run
+ros2 topic echo /object_pose
 ```
 
 # Demos and Result
