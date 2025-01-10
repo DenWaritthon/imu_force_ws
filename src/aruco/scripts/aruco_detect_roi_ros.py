@@ -16,7 +16,7 @@ class ArucoDetectNode(Node):
         super().__init__('aruco_detect_node')
         self.image_pub = self.create_publisher(Image, '/aruco_images', 10)
         self.object_pose_pub = self.create_publisher(Point, '/object_pose', 10)
-        self.size_roi_pub = self.create_publisher(Int16MultiArray, '/size_roi', 10)
+        # self.size_roi_pub = self.create_publisher(Int16MultiArray, '/size_roi', 10)
         self.bridge = CvBridge()
 
         self.cap = cv2.VideoCapture(2)
@@ -135,9 +135,9 @@ class ArucoDetectNode(Node):
                     object_pose.z = 0.0
                     self.object_pose_pub.publish(object_pose)
 
-                    size_roi = Int16MultiArray()
-                    size_roi.data = [int(roi_width_px), int(roi_height_px)]
-                    self.size_roi_pub.publish(size_roi)
+                    # size_roi = Int16MultiArray()
+                    # size_roi.data = [int(roi_width_px), int(roi_height_px)]
+                    # self.size_roi_pub.publish(size_roi)
 
         frame = cv2.flip(frame, 1)
         frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
