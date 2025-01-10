@@ -10,14 +10,15 @@ This repository focuses on developing firmware and implementing signal-processin
 
 # Scope
 - **Actual Object**
-  - The actual object is a cylinder with a diameter of 32 mm and a height of 60 mm. An IMU sensor is attached at the center of the object, which is made from PETG plastic.
+  - The actual object is the M5StickC Plus microcontroller.
 - **Simulation System**
-  -  The system is constructed on Gazebo with the object model being a cylinder of the same size as the actual object.
+  -  The system is constructed on Gazebo with the object model being a  Square shape of the same size as the actual object.
   -  The force applied to the object in the simulation system is only applied at the center of the object.
   -  The force applied will only be in the x and y axes.
-- **Testing System**
-  - Testing is conducted by attaching the actual object to a core XY movement system that can move 0.18 m in the x-axis and 0.18 m in the y-axis.
-  - The system will move with an acceleration not exceeding 0.5 m/s².
+- **Working environment**
+  - The operation will be performed under the A4 size test area with the Web camera set up 0.3 m above the paper.
+  
+  `ใส่รูปสภาพแวดล้อม`
 
 # User installation guide 
 
@@ -26,20 +27,8 @@ This repository focuses on developing firmware and implementing signal-processin
 Ensure you have the following dependencies installed
 
 **Hardware Require**
-- `STM32 G474RE`
-- `MPU6050`
-  
-**Hardware Setup**
-**Pin Connections**
-
-| STM32G474RE Pin | MPU6050 Pin |
-|-----------------|-------------|
-| 5V              | VCC         |
-| GND             | GND         |
-| PB_8/D15        | SCL         |
-| PB_9/D14        | SDA         |
-
-![pic_connections](picture/imu_force_pin.png)
+- `M5 StickC Plus`
+- `Web camera`
 
 **Middle ware**
 - `ROS2 Humble`
@@ -47,7 +36,7 @@ Ensure you have the following dependencies installed
 
 **Applications**
 - `Gazabo` 
-- `STM32CubeIDE`
+- `Platfrom IO`
 
 ## Install project workspace
 Clone this workspace
@@ -58,11 +47,16 @@ git clone https://github.com/DenWaritthon/imu_force_ws.git -b main
 
 # Methodology
 
-## IMU filter
-- **Moving Average Algorithm:**  
-  A custom node applies a moving average filter to the raw IMU data. This technique helps reduce noise and improve the quality of the measured signals.  
-- **Modularity & Extensibility:**  
-  The filtering implementation is modular, allowing for the easy integration of additional filters or algorithms in the future.
+## IMU filter : IIR filter 
+It is a filter used to adjust the acceleration value obtained from the IMU Sensor to be more stable by taking the previous value into consideration and adjusting the properties according to the specified gain value which will work according to the equation.
+```math
+a_{out} = a_k a_{in} + (1-a_k)a_{out}[n-1]
+```
+
+Given
+- $a_{out}$ is the acceleration out put from IIR filter
+- $a_{in}$ is the acceleration input put from IMU sensor
+- $a_k$ is gain value
 
 ## Newton's equations
 
@@ -73,29 +67,33 @@ Convert the velocity obtained from the IMU into a force to apply to the object i
 
 Given
 - $F$ is the force to be obtained
-- $m$ is the weight of the actual object, which weighs **xx kg. แก้ใน code ด้วย**
+- $m$ is the weight of the actual object, which weighs 0.02 kg.
 - $a$ is the acceleration measured by the IMU
+
+## Aruco
 
 
 # System architecture 
 
-![System architecture](<picture/System architecture.png>)
+`ใส่รูป System architecture`
 
-System separate the work into sub-node that work differently 6 node consist of
+System separate the work into sub-node that work differently 8 node consist of
 
-- IMU_Node (Micro ROS) is a node that have input value from IMU and Pub the value to Topic : /IMU_data to the node IMU_calibrate_node and lowpass_accel_collector_node.
-
-- IMU_calabrate_node is a Node that have input value from IMU_node (Micro ROS) to Calibrate value of the IMU to make it more accurate.
-
-- lowpass_accel_collector_node is a Node that have a input value from IMU_node (Micro Ros) after Calibate the value then the accelerate value by Pub Topic : /acceleration to Node Force_control_node.
-
-- Force_control_node is a Node that get input of accelerate value from Node : lowpass_accel_collector_node to calculate in Newton's equations to control Object by Servive :/apply_link_wrench of Gazebo.
-
-- dummy_imu_acceleration is a Node that is for testing of  Force_control_node that control Object of Gazebo.
-
-- Gazebo_node is a Node of  Gazebo program that will be display result of the system that have Topic : /Odom for display the position of the Object on Ground_truth.
-
-- distance_gazebo_node is a Node that have input value from Node : Gazebo_node to calculate distance and displacement origin to Object.
+- **M5StickC_IMU_node (Micro Ros)**
+  
+- **imu_calibration_node** is a Node that have input value from IMU_node (Micro ROS) to Calibrate value of the IMU to make it more accurate.
+  
+- **imu_filter_node** is a Node that have a input value from M5StickC_IMU_node (Micro Ros) after Calibate the value then the accelerate value by Pub Topic : /acceleration to Node Force_control_node.
+  
+- **aruco_detect_node**
+  
+- **aruco_controller**
+  
+- **Force_control_node** is a Node that get input of accelerate value from Node : imu_filter_node to calculate in Newton's equations and get input of difference between actual position and position in Gazebo from Node : aruco_controller to control Object by Servive :/apply_link_wrench of Gazebo.
+  
+- **Gazebo_node**
+  
+- **model_position_node** is a Node that have input value from Node : Gazebo_node to calculate model position.
   
 # User guide
 
@@ -109,57 +107,52 @@ source install/setup.bash
 
 ## How to use simulation
 
-Run the simulation in ROS2
+Before starting the operation after setting up the environment.
 
-**Run controller system**
-
+- **Run caliblate IMU**
 ``` bash
-ros2 launch imu_force_gazebo sim.launch.py
+ros2 run
 ```
 
-**Run imu calibration**
+Run the simulation in ROS2.
 
-```bash
-ros2 run imu_calibration calibrate.py
+- **Run Gazebo simulation**
+``` bash
+ros2 launch imu_force_gazebo 
 ```
 
-**Run imu publisher**
-```bash
-ros2 run imu_calibration controller_node.py
+- **Run IMU filter**
+``` bash
+ros2 run
 ```
 
-### Config IMU 
-Able to edit the axis of the IMU (In case of that you want to rotate the axis)
+- **Run Aruco**
+``` bash
+ros2 run
+```
 
-![imu_config_1](picture/imu_config_1.png)
+- **Run Force controller**
+``` bash
+ros2 run
+```
 
-And able to choose from this two option below
-- raw – bias
-- moving average
-By comment the code
-And after that you need to colcon build to build the project so the project can be work properly
+Check the position of objects in the Gazebo and the real world.
 
-![imu_config_2](picture/imu_config_2.png)   
+- **In Gazebo**
+``` bash
+ros2 run
+```
 
-If calibrate and the value  is not  0 you need to configuration the gravity according to the axis set as well
-
-![imu_config_3](picture/imu_config_3.png)
-
-If you make any changes, don't forget to run `colcon build` again.
+- **In real world**
+``` bash
+ros2 run
+```
 
 # Demos and Result
 
-To validate the system, we used a **3D printer platform** configured as a Core XY movement system. The platform was capable of precise movement in both the **X** and **Y axes** over a range of 0.18 meters. The IMU sensor, mounted at the center of the cylindrical object, provided acceleration data, which was used to compute and apply forces in the simulation environment.
-
-![setup-on-3d-printer](picture/realword_demo1.png)
-
-https://github.com/user-attachments/assets/d1790814-c31d-4a41-a45f-163a625fc1f0
-
-https://github.com/user-attachments/assets/afd3055f-6688-44f9-8034-80b5c2f93fe3
 
 # Conclusion
 
-Our system demonstrated successful real-time synchronization between virtual and physical objects. However, during automated testing utilizing a 3D-printed motion platform, the embedded IMU was susceptible to noise induced by the stepper motor system, hindering accurate object tracking. Manual intervention revealed that the system was capable of precise movement, suggesting that the noise interference was the primary cause of the observed inaccuracies.
 
 # Future plan
 - Explore advanced filtering algorithms (e.g., Kalman filters) for improved accuracy and robustness.
